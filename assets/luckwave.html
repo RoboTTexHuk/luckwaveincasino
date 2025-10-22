@@ -1,658 +1,847 @@
-<!DOCTYPE html><html><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
-    <meta name="x-poe-datastore-behavior" content="local_only">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html><html lang="en"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com; frame-src 'self' https://www.youtube.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <title>Bankroll Coach (Casino‑Safe)</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/highcharts-more.js"></script>
-    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <style>
-        /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
-        ::-webkit-scrollbar {
-            display: none;
-        }
-        /* Hide scrollbar for IE, Edge and Firefox */
-        body {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Ensure content scrolls independently on smaller screens */
-        #app-content {
-            -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
-        }
-
-        /* Адаптация для полноэкранного отображения на мобильных устройствах */
-        html, body {
-            height: 100%; /* Убедитесь, что html и body занимают всю высоту */
-            overflow: hidden; /* Предотвращает прокрутку body, если контент внутри scrollable */
-        }
-        #mobile-app-container {
-            height: 100%; /* Контейнер занимает всю высоту своего родителя (body) */
-            width: 100%; /* Контейнер занимает всю ширину своего родителя (body) */
-            max-width: none !important; /* Убирает ограничение по максимальной ширине */
-            max-height: none !important; /* Убирает ограничение по максимальной высоте */
-            border-radius: 0 !important; /* Убирает скругление углов для истинного полноэкранного отображения */
-            box-shadow: none !important; /* Убирает тень */
-        }
+        ::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; font-family: 'Inter', sans-serif; }
+        #app-content { -webkit-overflow-scrolling: touch; }
+        html, body { height: 100%; overflow: hidden; }
+        #mobile-app-container { height: 100%; width: 100%; max-width: none !important; max-height: none !important; border-radius: 0 !important; box-shadow: none !important; }
     </style>
     <script>
         tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'brand-dark': '#0D0F13',
-                        'brand-gray': '#1A1D23',
-                        'brand-light-gray': '#2C313A',
-                        'brand-text': '#A6B0C3',
-                        'brand-green': '#32D74B',
-                        'brand-red': '#FF453A',
-                        'brand-blue': '#0A84FF',
-                    }
-                }
+          theme: {
+            extend: {
+              colors: {
+                'brand-dark': '#0D0F13',
+                'brand-gray': '#1A1D23',
+                'brand-light-gray': '#2C313A',
+                'brand-text': '#A6B0C3',
+                'brand-green': '#32D74B',
+                'brand-red': '#FF453A',
+                'brand-blue': '#0A84FF',
+                'brand-warning': '#FFB020',
+                'brand-purple': '#8A5CF6'
+              }
             }
+          }
         }
     </script>
-<script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.bd4eeeb8e8e02052ee92.js"></script></head>
-<body class="bg-black flex justify-center items-center min-h-screen p-0 sm:p-0 md:p-0">
-    <!-- Удалены отступы с body для полноэкранного отображения -->
-    <div id="mobile-app-container" class="w-full h-full bg-brand-dark overflow-hidden relative flex flex-col mx-auto">
-        
-        <main id="app-content" class="flex-grow overflow-y-auto pb-24">
-            
-            <div id="tab-sessions" class="tab-content px-5 pt-12">
-                <div id="sessions-header" class="flex justify-between items-center mb-6">
-                    <div class="flex items-center space-x-2">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.0002 4.41309C15.148 4.41309 14.3217 4.70014 13.6394 5.21094L6.15137 11.213C5.00049 12.1449 5.31885 13.9785 6.75635 14.428L13.8867 16.6865C15.002 17.0371 16.2412 16.7828 17.1133 16.0337L25.8491 8.78711C26.9995 7.85547 26.6812 6.02148 25.2437 5.57227L18.1133 3.31348C17.4722 3.08464 16.7295 3.16732 16.1035 3.52441C15.938 3.63184 15.7871 3.75879 15.6562 3.89648L11.5586 7.99414L16.0002 11.667L20.4419 7.99414L16.0002 4.41309Z" fill="#32D74B"></path>
-                            <path d="M25.2437 27.5869L18.1133 29.8457C17.4722 30.0745 16.7295 29.9918 16.1035 29.6347C15.938 29.5273 15.7871 29.4004 15.6562 29.2627L11.5586 25.165L16.0002 21.4922L20.4419 25.165L25.8491 20.375C26.9995 19.4434 26.6812 17.6094 25.2437 17.1602L18.1133 14.8945C17.4722 14.6657 16.7295 14.7484 16.1035 15.1055C15.938 15.2129 15.7871 15.3398 15.6562 15.4775L6.15137 24.9824C5.00049 26.1328 5.31885 27.9668 6.75635 28.416L13.8867 30.6816C15.002 31.0322 16.2412 30.7779 17.1133 30.0288L25.2437 27.5869Z" fill="#32D74B"></path>
-                        </svg>
-                        <span class="text-white font-bold text-2xl">luckywave</span>
-                    </div>
-                    <button id="add-session-btn" class="bg-brand-green/20 text-brand-green w-10 h-10 rounded-full flex items-center justify-center">
-                        <i class="fa-solid fa-plus text-lg"></i>
-                    </button>
-                </div>
-                <h1 class="text-white text-3xl font-bold mb-1">My Sessions</h1>
-                <p class="text-brand-text mb-8">A log of your recent casino plays.</p>
+    <script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.3f7572448765332f3047.js"></script></head>
+<body class="bg-black flex justify-center items-center min-h-screen">
+<div id="mobile-app-container" class="w-full h-full bg-brand-dark overflow-hidden relative flex flex-col mx-auto">
+    <main id="app-content" class="flex-grow overflow-y-auto pb-28">
 
-                <div id="sessions-list" class="space-y-4">
-                    <!-- Dynamic sessions will be added here -->
+        <!-- Header -->
+        <div class="px-5 pt-12">
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center space-x-2">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M16.0002 4.41309C15.148 4.41309 14.3217 4.70014 13.6394 5.21094L6.15137 11.213C5.00049 12.1449 5.31885 13.9785 6.75635 14.428L13.8867 16.6865C15.002 17.0371 16.2412 16.7828 17.1133 16.0337L25.8491 8.78711C26.9995 7.85547 26.6812 6.02148 25.2437 5.57227L18.1133 3.31348C17.4722 3.08464 16.7295 3.16732 16.1035 3.52441C15.938 3.63184 15.7871 3.75879 15.6562 3.89648L11.5586 7.99414L16.0002 11.667L20.4419 7.99414L16.0002 4.41309Z" fill="#32D74B"></path>
+                        <path d="M25.2437 27.5869L18.1133 29.8457C17.4722 30.0745 16.7295 29.9918 16.1035 29.6347C15.938 29.5273 15.7871 29.4004 15.6562 29.2627L11.5586 25.165L16.0002 21.4922L20.4419 25.165L25.8491 20.375C26.9995 19.4434 26.6812 17.6094 25.2437 17.1602L18.1133 14.8945C17.4722 14.6657 16.7295 14.7484 16.1035 15.1055C15.938 15.2129 15.7871 15.3398 15.6562 15.4775L6.15137 24.9824C5.00049 26.1328 5.31885 27.9668 6.75635 28.416L13.8867 30.6816C15.002 31.0322 16.2412 30.7779 17.1133 30.0288L25.2437 27.5869Z" fill="#32D74B"></path>
+                    </svg>
+                    <span class="text-white font-bold text-2xl">Bankroll Coach</span>
+                    <span class="text-brand-text text-sm ml-2">Casino‑safe</span>
                 </div>
-            </div>
-
-            <div id="tab-tips" class="tab-content hidden px-5 pt-12">
-                <h1 class="text-white text-3xl font-bold mb-2">Pro Player Tips</h1>
-                <p class="text-brand-text mb-8">Master the slots with these expert tips.</p>
-                <div id="tips-list" class="space-y-4">
-                    <div id="tip-1" class="bg-brand-gray p-5 rounded-2xl">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-brand-green/20 text-brand-green w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-sack-dollar"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-white font-semibold mb-1">Set a Budget</h3>
-                                <p class="text-brand-text text-sm leading-relaxed">Always decide on a maximum amount you're willing to lose before you start playing and stick to it. Never chase losses.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tip-2" class="bg-brand-gray p-5 rounded-2xl">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-brand-green/20 text-brand-green w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-percent"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-white font-semibold mb-1">Check the RTP</h3>
-                                <p class="text-brand-text text-sm leading-relaxed">Look for slots with a high Return to Player (RTP) percentage, ideally above 96%. This indicates better long-term payout potential.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tip-3" class="bg-brand-gray p-5 rounded-2xl">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-brand-green/20 text-brand-green w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-white font-semibold mb-1">Understand Volatility</h3>
-                                <p class="text-brand-text text-sm leading-relaxed">High volatility slots pay out less often but in larger amounts. Low volatility slots offer smaller, more frequent wins. Choose based on your risk tolerance.</p>
-                            </div>
-                        </div>
-                    </div>
-                     <div id="tip-4" class="bg-brand-gray p-5 rounded-2xl">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-brand-green/20 text-brand-green w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-gift"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-white font-semibold mb-1">Utilize Bonuses</h3>
-                                <p class="text-brand-text text-sm leading-relaxed">Take advantage of casino bonuses like free spins. They give you extra chances to play and win without risking your own money.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="tab-casinos" class="tab-content hidden px-5 pt-12">
-                <h1 class="text-white text-3xl font-bold mb-2">Famous Casinos</h1>
-                <p class="text-brand-text mb-8">Explore the world's most iconic gaming destinations.</p>
-                <div id="casinos-list" class="space-y-6">
-                    <div id="casino-1" class="relative rounded-2xl overflow-hidden h-48 flex flex-col justify-end p-4 bg-gradient-to-t from-black/80 to-transparent">
-                        <img class="absolute inset-0 w-full h-full object-cover -z-10" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b0ab898e42-9668e230ac32fbeca833.png" alt="Bellagio Casino Las Vegas at night, vibrant, cinematic">
-                        <h3 class="text-white text-xl font-bold">Bellagio</h3>
-                        <p class="text-gray-300 text-sm">Las Vegas, USA</p>
-                    </div>
-                    <div id="casino-2" class="relative rounded-2xl overflow-hidden h-48 flex flex-col justify-end p-4 bg-gradient-to-t from-black/80 to-transparent">
-                         <img class="absolute inset-0 w-full h-full object-cover -z-10" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/8752beb954-879b98e408961c276f91.png" alt="Casino de Monte-Carlo exterior, opulent, classic architecture, Monaco">
-                        <h3 class="text-white text-xl font-bold">Casino de Monte-Carlo</h3>
-                        <p class="text-gray-300 text-sm">Monte Carlo, Monaco</p>
-                    </div>
-                     <div id="casino-3" class="relative rounded-2xl overflow-hidden h-48 flex flex-col justify-end p-4 bg-gradient-to-t from-black/80 to-transparent">
-                         <img class="absolute inset-0 w-full h-full object-cover -z-10" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ff6d39972b-7a8b1bfaf79a23ed65dd.png" alt="The Venetian Macao exterior, grand canal, gondolas, night time">
-                        <h3 class="text-white text-xl font-bold">The Venetian Macao</h3>
-                        <p class="text-gray-300 text-sm">Macau, China</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="tab-analytics" class="tab-content hidden px-5 pt-12">
-                 <h1 class="text-white text-3xl font-bold mb-2">Your Analytics</h1>
-                <p class="text-brand-text mb-8">An overview of your gaming performance.</p>
-                
-                <div id="analytics-summary" class="grid grid-cols-2 gap-4 mb-6">
-                    <div id="total-winnings-card" class="bg-brand-gray p-4 rounded-2xl">
-                        <p class="text-brand-text text-sm mb-1">Total Net Winnings</p>
-                        <p id="total-net-winnings" class="text-brand-green text-2xl font-bold">+$0.00</p>
-                    </div>
-                    <div id="win-rate-card" class="bg-brand-gray p-4 rounded-2xl">
-                        <p class="text-brand-text text-sm mb-1">Win Rate</p>
-                        <p id="win-rate" class="text-white text-2xl font-bold">0%</p>
-                    </div>
-                </div>
-
-                <div id="win-loss-chart-container" class="bg-brand-gray p-4 rounded-2xl mb-6">
-                     <h3 class="text-white font-semibold mb-4">Win/Loss Over Time</h3>
-                     <div id="win-loss-chart" class="h-48"></div>
-                </div>
-                
-                <div id="casino-performance-chart-container" class="bg-brand-gray p-4 rounded-2xl">
-                     <h3 class="text-white font-semibold mb-4">Performance by Casino</h3>
-                     <div id="casino-performance-chart" class="h-56"></div>
-                </div>
-            </div>
-        </main>
-
-        <nav id="bottom-navigation" class="absolute bottom-0 left-0 right-0 h-24 bg-brand-gray/80 backdrop-blur-xl border-t border-brand-light-gray" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
-            <div class="flex justify-around items-center h-full px-2 pt-2">
-                <button data-tab="sessions" class="nav-item flex flex-col items-center space-y-1 text-brand-green">
-                    <i class="fa-solid fa-spade text-2xl"></i>
-                    <span class="text-xs font-medium">Sessions</span>
+                <button id="add-session-btn" class="bg-brand-green/20 text-brand-green w-10 h-10 rounded-full flex items-center justify-center" title="Quick Deposit">
+                    <i class="fa-solid fa-bolt text-lg"></i>
                 </button>
-                <button data-tab="tips" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
-                    <i class="fa-solid fa-lightbulb text-2xl"></i>
-                    <span class="text-xs font-medium">Tips</span>
-                </button>
-                <button data-tab="casinos" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
-                    <i class="fa-solid fa-landmark text-2xl"></i>
-                    <span class="text-xs font-medium">Casinos</span>
-                </button>
-                <button data-tab="analytics" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
-                    <i class="fa-solid fa-chart-pie text-2xl"></i>
-                    <span class="text-xs font-medium">Analytics</span>
-                </button>
-            </div>
-        </nav>
-        
-        <!-- Responsive notch: w-2/5 for relative width -->
-        <div id="iphone-notch" class="absolute top-0 left-1/2 -translate-x-1/2 w-2/5 h-7 bg-brand-dark rounded-b-2xl"></div>
-
-        <!-- Session Add Modal -->
-        <div id="session-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-75 backdrop-blur-sm">
-            <div class="bg-brand-gray p-6 rounded-2xl w-full max-w-sm">
-                <h2 class="text-white text-2xl font-bold mb-5">Add New Session</h2>
-                
-                <div class="mb-4">
-                    <label for="modal-amount" class="block text-brand-text text-sm font-medium mb-2">Amount ($)</label>
-                    <input type="number" id="modal-amount" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="e.g., 250.75 or -50.00" step="0.01">
-                </div>
-
-                <div class="mb-4">
-                    <label class="block text-brand-text text-sm font-medium mb-2">Result</label>
-                    <div class="flex space-x-4">
-                        <button id="modal-result-win" class="flex-1 py-2 px-4 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-selected="true">
-                            <i class="fa-solid fa-plus-circle mr-2"></i>Win
-                        </button>
-                        <button id="modal-result-loss" class="flex-1 py-2 px-4 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-red data-[selected=true]:bg-brand-red/20 data-[selected=true]:text-brand-red" data-selected="false">
-                            <i class="fa-solid fa-minus-circle mr-2"></i>Loss
-                        </button>
-                    </div>
-                </div>
-
-                <div class="mb-4">
-                    <label for="modal-date" class="block text-brand-text text-sm font-medium mb-2">Date</label>
-                    <input type="date" id="modal-date" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green">
-                </div>
-
-                <div class="mb-4">
-                    <label for="modal-casino" class="block text-brand-text text-sm font-medium mb-2">Casino</label>
-                    <select id="modal-casino" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green">
-                        <option value="Bellagio Casino">Bellagio Casino</option>
-                        <option value="Caesars Palace">Caesars Palace</option>
-                        <option value="MGM Grand">MGM Grand</option>
-                        <option value="Aria Resort">Aria Resort</option>
-                        <option value="The Palazzo">The Palazzo</option>
-                        <option value="Wynn Las Vegas">Wynn Las Vegas</option>
-                        <option value="Other">Other...</option>
-                    </select>
-                    <!-- New custom input field for "Other" casino -->
-                    <input type="text" id="modal-other-casino-name" class="w-full p-3 mt-2 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green hidden" placeholder="Enter casino name">
-                </div>
-
-                <div class="mb-6">
-                    <label for="modal-icon" class="block text-brand-text text-sm font-medium mb-2">Icon</label>
-                    <div id="modal-icon-selection" class="grid grid-cols-5 gap-2">
-                        <button class="icon-option p-2 rounded-lg bg-brand-dark text-brand-text border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-icon="fa-gem"><i class="fa-solid fa-gem"></i></button>
-                        <button class="icon-option p-2 rounded-lg bg-brand-dark text-brand-text border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-icon="fa-crown"><i class="fa-solid fa-crown"></i></button>
-                        <button class="icon-option p-2 rounded-lg bg-brand-dark text-brand-text border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-icon="fa-star"><i class="fa-solid fa-star"></i></button>
-                        <button class="icon-option p-2 rounded-lg bg-brand-dark text-brand-text border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-icon="fa-clover"><i class="fa-solid fa-clover"></i></button>
-                        <button class="icon-option p-2 rounded-lg bg-brand-dark text-brand-text border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-icon="fa-dice"><i class="fa-solid fa-dice"></i></button>
-                        <button class="icon-option p-2 rounded-lg bg-brand-dark text-brand-text border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-icon="fa-coins"><i class="fa-solid fa-coins"></i></button>
-                        <button class="icon-option p-2 rounded-lg bg-brand-dark text-brand-text border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-icon="fa-chart-line"><i class="fa-solid fa-chart-line"></i></button>
-                        <button class="icon-option p-2 rounded-lg bg-brand-dark text-brand-text border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-icon="fa-wallet"><i class="fa-solid fa-wallet"></i></button>
-                        <button class="icon-option p-2 rounded-lg bg-brand-dark text-brand-text border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-icon="fa-hand-holding-dollar"><i class="fa-solid fa-hand-holding-dollar"></i></button>
-                        <button class="icon-option p-2 rounded-lg bg-brand-dark text-brand-text border border-brand-light-gray focus:outline-none focus:border-brand-green data-[selected=true]:bg-brand-green/20 data-[selected=true]:text-brand-green" data-icon="fa-credit-card"><i class="fa-solid fa-credit-card"></i></button>
-                    </div>
-                </div>
-
-                <div class="flex justify-end space-x-4">
-                    <button id="modal-cancel-btn" class="py-2 px-5 rounded-lg bg-brand-light-gray text-white font-medium">Cancel</button>
-                    <button id="modal-save-btn" class="py-2 px-5 rounded-lg bg-brand-blue text-white font-medium">Save Session</button>
-                </div>
             </div>
         </div>
 
+        <!-- TAB: PLAN -->
+        <div id="tab-plan" class="tab-content px-5 pt-2">
+            <h1 class="text-white text-3xl font-bold mb-1">My Plan</h1>
+            <p class="text-brand-text mb-6">Budget, targets, limits and weekly progress.</p>
+
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-brand-gray p-4 rounded-2xl">
+                    <p class="text-brand-text text-sm mb-1">Bankroll</p>
+                    <p id="kpi-bankroll" class="text-white text-2xl font-bold">$0.00</p>
+                    <p class="text-brand-text text-xs mt-1">Target reserve: <span id="kpi-target" class="text-white">$0.00</span></p>
+                </div>
+                <div class="bg-brand-gray p-4 rounded-2xl">
+                    <p class="text-brand-text text-sm mb-1">Max Session Risk</p>
+                    <p id="kpi-risk" class="text-white text-2xl font-bold">0%</p>
+                    <p id="risk-note" class="text-brand-text text-xs mt-1">Low</p>
+                </div>
+            </div>
+
+            <div class="bg-brand-gray p-4 rounded-2xl mb-6">
+                <p class="text-white font-semibold mb-3">Weekly Progress</p>
+                <div class="w-full h-3 bg-brand-light-gray rounded-full overflow-hidden">
+                    <div id="bar-week" class="h-full bg-brand-green" style="width: 0%"></div>
+                </div>
+                <p id="week-desc" class="text-brand-text text-sm mt-2">No plan started yet</p>
+            </div>
+
+            <div class="bg-brand-gray p-4 rounded-2xl mb-6">
+                <p class="text-white font-semibold mb-3">Quick Actions</p>
+                <div class="grid grid-cols-2 gap-3">
+                    <button id="act-log-deposit" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left">
+                        <i class="fa-solid fa-circle-arrow-up text-brand-green mr-2"></i> Log Deposit
+                    </button>
+                    <button id="act-log-withdraw" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left">
+                        <i class="fa-solid fa-circle-arrow-down text-brand-red mr-2"></i> Log Withdrawal
+                    </button>
+                    <button id="act-mark-cooloff" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left">
+                        <i class="fa-solid fa-snowflake text-brand-blue mr-2"></i> Start Cool‑Off
+                    </button>
+                    <button id="act-add-habit" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left">
+                        <i class="fa-solid fa-list-check text-brand-green mr-2"></i> Add Habit
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-brand-gray p-4 rounded-2xl mb-6">
+                <p class="text-white font-semibold mb-3">Plan Setup</p>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-brand-text text-xs mb-1">Starting Bankroll ($)</label>
+                        <input id="inp-bankroll" type="number" step="0.01" min="0" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="500.00">
+                    </div>
+                    <div>
+                        <label class="block text-brand-text text-xs mb-1">Target Reserve ($)</label>
+                        <input id="inp-target" type="number" step="0.01" min="0" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="300.00">
+                    </div>
+                    <div>
+                        <label class="block text-brand-text text-xs mb-1">Weekly Budget ($)</label>
+                        <input id="inp-weekly" type="number" step="0.01" min="0" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="120.00">
+                    </div>
+                    <div>
+                        <label class="block text-brand-text text-xs mb-1">Max Session Risk (%)</label>
+                        <input id="inp-risk" type="number" step="1" min="1" max="100" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="5">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label class="block text-brand-text text-xs mb-2">Primary Goal</label>
+                    <select id="sel-goal" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green">
+                        <option value="save">Save more</option>
+                        <option value="stabilize">Stabilize fluctuations</option>
+                        <option value="reduce">Reduce time spent</option>
+                        <option value="quit">Quit completely</option>
+                    </select>
+                </div>
+                <div class="mt-3">
+                    <label class="block text-brand-text text-xs mb-2">Casino Categories to Track</label>
+                    <div id="cats" class="flex flex-wrap gap-2"></div>
+                </div>
+                <div class="mt-4">
+                    <button id="btn-save-plan" class="py-3 px-5 rounded-lg bg-brand-blue text-white font-medium w-full">Save Plan</button>
+                </div>
+            </div>
+
+            <div class="bg-brand-gray p-4 rounded-2xl mb-6">
+                <p class="text-white font-semibold mb-3">Weekly Checklist</p>
+                <div id="weekly-checklist" class="space-y-2"></div>
+                <p class="text-brand-text text-xs mt-3">Check items daily. Habits drive long‑term outcomes.</p>
+            </div>
+
+            <div class="bg-brand-gray p-4 rounded-2xl mb-8">
+                <p class="text-white font-semibold mb-3">Recent Activity</p>
+                <div id="activity" class="space-y-2"></div>
+                <div id="empty-activity" class="text-brand-text text-sm">No activity yet</div>
+            </div>
+
+            <div class="bg-brand-dark p-4 rounded-2xl border border-brand-light-gray mb-8">
+                <p class="text-brand-text text-xs">
+                    This app does not promote gambling. It helps plan budgets and reduce risk. If gambling is causing problems, consider seeking help from responsible gambling resources below.
+                </p>
+            </div>
+        </div>
+
+        <!-- TAB: LEARN -->
+        <div id="tab-learn" class="tab-content hidden px-5 pt-12">
+            <h1 class="text-white text-3xl font-bold mb-2">Learn</h1>
+            <p class="text-brand-text mb-4">Short course and guidelines for safer casino play.</p>
+            <div class="bg-brand-gray p-4 rounded-2xl mb-6">
+                <h3 class="text-white font-semibold mb-3">Starter Course</h3>
+                <div id="course" class="space-y-2"></div>
+                <div class="mt-3 w-full h-3 bg-brand-light-gray rounded-full overflow-hidden">
+                    <div id="course-progress" class="h-full bg-brand-green" style="width:0%"></div>
+                </div>
+                <p id="course-note" class="text-brand-text text-xs mt-2">0/6 completed</p>
+            </div>
+            <div class="bg-brand-gray p-4 rounded-2xl">
+                <h3 class="text-white font-semibold mb-3">Guidelines</h3>
+                <ul class="text-brand-text text-sm list-disc pl-5 space-y-2">
+                    <li>No casino links, ads, or promotions here.</li>
+                    <li>Budget first; sessions are optional and limited.</li>
+                    <li>Use cool‑off instead of chasing losses.</li>
+                    <li>Set daily time and loss caps. Respect them.</li>
+                    <li>Review weekly and adjust limits down when needed.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TAB: JOURNAL -->
+        <div id="tab-journal" class="tab-content hidden px-5 pt-12">
+            <h1 class="text-white text-3xl font-bold mb-2">Journal</h1>
+            <p class="text-brand-text mb-6">Reflect on mood, time, and insights.</p>
+
+            <div class="bg-brand-gray p-4 rounded-2xl mb-6">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-brand-text text-xs mb-1">Mood</label>
+                        <select id="j-mood" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green">
+                            <option>😊 Great</option><option>🙂 Good</option><option>😐 Neutral</option><option>🙁 Low</option><option>😫 Stressed</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-brand-text text-xs mb-1">Time Spent (min)</label>
+                        <input id="j-time" type="number" min="0" step="5" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="0">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label class="block text-brand-text text-xs mb-1">What went well?</label>
+                    <textarea id="j-good" rows="3" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="Wins, discipline moments, insights"></textarea>
+                </div>
+                <div class="mt-3">
+                    <label class="block text-brand-text text-xs mb-1">What needs attention?</label>
+                    <textarea id="j-bad" rows="3" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="Triggers, mistakes, things to change"></textarea>
+                </div>
+                <div class="mt-4">
+                    <button id="btn-save-journal" class="py-3 px-5 rounded-lg bg-brand-blue text-white font-medium w-full">Save Entry</button>
+                </div>
+            </div>
+
+            <div class="bg-brand-gray p-4 rounded-2xl">
+                <h3 class="text-white font-semibold mb-3">Entries</h3>
+                <div id="journal-entries" class="space-y-2"></div>
+                <div id="empty-journal" class="text-brand-text text-sm">No entries yet</div>
+            </div>
+        </div>
+
+        <!-- TAB: SAFETY -->
+        <div id="tab-safety" class="tab-content hidden px-5 pt-12">
+            <h1 class="text-white text-3xl font-bold mb-2">Safety &amp; Data</h1>
+            <p class="text-brand-text mb-6">Limits, cool‑off, export/import, and privacy.</p>
+
+            <div class="grid grid-cols-1 gap-4 mb-6">
+                <div class="bg-brand-gray p-4 rounded-2xl">
+                    <p class="text-brand-text text-sm mb-1">Daily Time Limit (min)</p>
+                    <div class="flex items-center gap-3">
+                        <input id="set-time-limit" type="number" min="0" class="flex-1 p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="60">
+                        <button id="apply-time-limit" class="py-2 px-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray">Save</button>
+                    </div>
+                </div>
+                <div class="bg-brand-gray p-4 rounded-2xl">
+                    <p class="text-brand-text text-sm mb-1">Daily Loss Cap ($)</p>
+                    <div class="flex items-center gap-3">
+                        <input id="set-loss-cap" type="number" min="0" step="0.01" class="flex-1 p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="50.00">
+                        <button id="apply-loss-cap" class="py-2 px-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray">Save</button>
+                    </div>
+                </div>
+                <div class="bg-brand-gray p-4 rounded-2xl">
+                    <p class="text-brand-text text-sm mb-1">Cool‑Off (days)</p>
+                    <div class="flex items-center gap-3">
+                        <input id="set-cooloff-days" type="number" min="0" class="flex-1 p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="3">
+                        <button id="btn-apply-cooloff" class="py-2 px-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray">Apply</button>
+                    </div>
+                    <p id="cooloff-status" class="text-brand-text text-xs mt-2">No cool‑off scheduled</p>
+                </div>
+            </div>
+
+            <div class="bg-brand-gray p-4 rounded-2xl">
+                <p class="text-white font-semibold mb-3">Data</p>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button id="btn-export" class="py-2 px-4 rounded-lg bg-brand-dark text-white border border-brand-light-gray">Export JSON</button>
+                    <button id="btn-import" class="py-2 px-4 rounded-lg bg-brand-dark text-white border border-brand-light-gray">Import JSON</button>
+                    <input id="file-import" type="file" accept="application/json" class="hidden">
+                    <button id="btn-clear" class="py-2 px-4 rounded-lg bg-brand-red text-white">Clear All</button>
+                </div>
+                <p class="text-brand-text text-xs mt-3">Your data is stored locally when available. In sandboxed iframes it runs in memory; use Export/Import to persist.</p>
+            </div>
+
+            <div class="bg-brand-dark p-4 rounded-2xl border border-brand-light-gray mt-6">
+                <h3 class="text-white font-semibold mb-2">Responsible Gambling Resources</h3>
+                <ul class="text-brand-text text-sm list-disc pl-5 space-y-1">
+                    <li>Set time and money limits before you start.</li>
+                    <li>Never chase losses; take a cool‑off instead.</li>
+                    <li>Keep gambling separate from paying essential bills.</li>
+                    <li>If gambling is impacting your life, consider reaching out to local support hotlines or counseling services in your country.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TAB: REPORTS -->
+        <div id="tab-reports" class="tab-content hidden px-5 pt-12">
+            <h1 class="text-white text-3xl font-bold mb-2">Reports</h1>
+            <p class="text-brand-text mb-6">Weekly/monthly summaries and limit compliance.</p>
+
+            <div class="grid grid-cols-1 gap-4 mb-6">
+                <div class="bg-brand-gray p-4 rounded-2xl">
+                    <p class="text-white font-semibold mb-3">Summary</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-brand-dark border border-brand-light-gray rounded-xl p-3">
+                            <p class="text-brand-text text-xs">Deposits (30d)</p>
+                            <p id="rep-deposits" class="text-white text-xl font-bold">$0.00</p>
+                        </div>
+                        <div class="bg-brand-dark border border-brand-light-gray rounded-xl p-3">
+                            <p class="text-brand-text text-xs">Withdrawals (30d)</p>
+                            <p id="rep-withdrawals" class="text-white text-xl font-bold">$0.00</p>
+                        </div>
+                        <div class="bg-brand-dark border border-brand-light-gray rounded-xl p-3">
+                            <p class="text-brand-text text-xs">Net (30d)</p>
+                            <p id="rep-net" class="text-white text-xl font-bold">$0.00</p>
+                        </div>
+                        <div class="bg-brand-dark border border-brand-light-gray rounded-xl p-3">
+                            <p class="text-brand-text text-xs">Sessions Logged (30d)</p>
+                            <p id="rep-sessions" class="text-white text-xl font-bold">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-gray p-4 rounded-2xl">
+                    <p class="text-white font-semibold mb-3">Limit Compliance</p>
+                    <ul id="rep-compliance" class="text-sm text-brand-text list-disc pl-5 space-y-1"></ul>
+                </div>
+
+                <div class="bg-brand-gray p-4 rounded-2xl">
+                    <p class="text-white font-semibold mb-3">Activity Log (last 30)</p>
+                    <div id="rep-activity" class="space-y-2"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav id="bottom-navigation" class="absolute bottom-0 left-0 right-0 h-24 bg-brand-gray/80 backdrop-blur-xl border-t border-brand-light-gray" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+        <div class="flex justify-around items-center h-full px-2 pt-2">
+            <button data-tab="plan" class="nav-item flex flex-col items-center space-y-1 text-brand-green">
+                <i class="fa-solid fa-clipboard-check text-2xl"></i>
+                <span class="text-xs font-medium">Plan</span>
+            </button>
+            <button data-tab="learn" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
+                <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                <span class="text-xs font-medium">Learn</span>
+            </button>
+            <button data-tab="journal" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
+                <i class="fa-solid fa-book text-2xl"></i>
+                <span class="text-xs font-medium">Journal</span>
+            </button>
+            <button data-tab="reports" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
+                <i class="fa-solid fa-chart-simple text-2xl"></i>
+                <span class="text-xs font-medium">Reports</span>
+            </button>
+            <button data-tab="safety" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
+                <i class="fa-solid fa-shield-heart text-2xl"></i>
+                <span class="text-xs font-medium">Safety</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Notch -->
+    <div id="iphone-notch" class="absolute top-0 left-1/2 -translate-x-1/2 w-2/5 h-7 bg-brand-dark rounded-b-2xl"></div>
+
+    <!-- Toast -->
+    <div id="toast" class="hidden fixed inset-x-0 bottom-28 z-50 flex items-center justify-center">
+        <div class="bg-brand-dark border border-brand-light-gray text-white text-sm px-4 py-2 rounded-xl">Saved</div>
     </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const navItems = document.querySelectorAll('.nav-item');
-            const tabContents = document.querySelectorAll('.tab-content');
-            const sessionsList = document.getElementById('sessions-list');
-            const addSessionBtn = document.getElementById('add-session-btn');
-            const totalNetWinningsElement = document.getElementById('total-net-winnings');
-            const winRateElement = document.getElementById('win-rate');
+<script>
+    // =========================
+    // Safe Storage Abstraction
+    // =========================
+    const storeKey = 'bankroll_coach_casino_v1';
+    const memoryStore = new Map();
+    function storageAvailable() {
+      try { const t='__t__'; localStorage.setItem(t,'1'); localStorage.removeItem(t); return true; } catch(e){ return false; }
+    }
+    const HAS_LS = storageAvailable();
+    const setItemSafe = (k,v)=>{ if(HAS_LS){ try{ localStorage.setItem(k,v); }catch(e){ memoryStore.set(k,v);} } else { memoryStore.set(k,v);} };
+    const getItemSafe = (k)=>{ if(HAS_LS){ try{ return localStorage.getItem(k);}catch(e){ return memoryStore.get(k)??null;} } return memoryStore.has(k)?memoryStore.get(k):null; };
+    const removeItemSafe = (k)=>{ if(HAS_LS){ try{ localStorage.removeItem(k);}catch(e){ memoryStore.delete(k);} } else { memoryStore.delete(k);} };
 
-            const sessionModal = document.getElementById('session-modal');
-            const modalAmountInput = document.getElementById('modal-amount');
-            const modalResultWinBtn = document.getElementById('modal-result-win');
-            const modalResultLossBtn = document.getElementById('modal-result-loss');
-            const modalDateInput = document.getElementById('modal-date');
-            const modalCasinoSelect = document.getElementById('modal-casino');
-            const modalOtherCasinoNameInput = document.getElementById('modal-other-casino-name'); // New: Custom casino input
-            const modalIconSelection = document.getElementById('modal-icon-selection');
-            const modalCancelBtn = document.getElementById('modal-cancel-btn');
-            const modalSaveBtn = document.getElementById('modal-save-btn');
+    // =============
+    // App State
+    // =============
+    const state = {
+      plan: {
+        bankroll: 0,
+        target: 0,
+        weekly: 0,
+        riskPct: 5,
+        goal: 'save',
+        categories: ['Slots','Live','Roulette','Blackjack'],
+        habits: [
+          {id:'h1', title:'Stop when tired or tilted', done:false},
+          {id:'h2', title:'Log deposits and withdrawals', done:false},
+          {id:'h3', title:'Weekly review (10 min)', done:false},
+          {id:'h4', title:'No play after 10pm', done:false},
+          {id:'h5', title:'One day off per week', done:false},
+          {id:'h6', title:'15‑min walk before play', done:false},
+        ],
+        progressWeek: 0
+      },
+      activity: [],
+      journal: [],
+      course: [
+        {id:'c1', text:'Define your monthly entertainment budget (not disposable income)', done:false},
+        {id:'c2', text:'Set daily/weekly loss caps in the app', done:false},
+        {id:'c3', text:'Pick 3 habits to enforce every session', done:false},
+        {id:'c4', text:'Create a cool‑off rule for tough days', done:false},
+        {id:'c5', text:'Enable time limit reminders', done:false},
+        {id:'c6', text:'Review weekly and lower limits when needed', done:false},
+      ],
+      safety: { timeLimit: 0, lossCap: 0, coolOffDays: 0, coolOffUntil: null }
+    };
 
-            let sessionData = []; // Store session data to update analytics
-            let winLossChart;
-            let casinoPerformanceChart;
-            let selectedResultType = 'win'; // 'win' or 'loss'
-            let selectedIcon = 'fa-gem'; // Default icon
+    function save(){ setItemSafe(storeKey, JSON.stringify(state)); }
+    function load(){
+      const raw = getItemSafe(storeKey);
+      if(!raw) return;
+      try {
+        const s = JSON.parse(raw);
+        Object.assign(state, s);
+        state.plan = Object.assign({
+          bankroll:0,target:0,weekly:0,riskPct:5,goal:'save',categories:[],habits:[],progressWeek:0
+        }, state.plan);
+        state.safety = Object.assign({timeLimit:0,lossCap:0,coolOffDays:0,coolOffUntil:null}, state.safety);
+        if(!Array.isArray(state.course)) state.course=[];
+        if(!Array.isArray(state.activity)) state.activity=[];
+        if(!Array.isArray(state.journal)) state.journal=[];
+      } catch(e){}
+    }
 
-            // Initial sessions data
-            const initialSessions = [
-                { id: 1, casino: "Bellagio Casino", date: "Oct 15, 2025", net: 250.75, icon: "fa-gem" },
-                { id: 2, casino: "Caesars Palace", date: "Oct 12, 2025", net: -120.00, icon: "fa-crown" },
-                { id: 3, casino: "MGM Grand", date: "Oct 10, 2025", net: 85.50, icon: "fa-star" },
-                { id: 4, casino: "Aria Resort", date: "Oct 05, 2025", net: -50.25, icon: "fa-clover" },
-            ];
+    // =============
+    // Helpers
+    // =============
+    const $ = (q,el=document)=>el.querySelector(q);
+    const $$= (q,el=document)=>Array.from(el.querySelectorAll(q));
+    function toast(msg='Saved'){
+      const t = $('#toast'); t.querySelector('div').textContent = msg;
+      t.classList.remove('hidden'); clearTimeout(toast._t);
+      toast._t = setTimeout(()=>t.classList.add('hidden'), 1400);
+    }
+    const fmt = (n)=>'$'+Number(n||0).toFixed(2);
+    const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
+    function riskLabel(p){
+      if(p<=5) return {text:'Low', color:'text-brand-text'};
+      if(p<=10) return {text:'Moderate', color:'text-brand-warning'};
+      return {text:'High', color:'text-brand-red'};
+    }
+    const now = ()=>Date.now();
 
-            function renderSession(session) {
-                const sessionElement = document.createElement('div');
-                sessionElement.id = `session-${session.id}`;
-                sessionElement.className = 'bg-brand-gray p-4 rounded-2xl flex items-center justify-between';
-                sessionElement.innerHTML = `
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-brand-light-gray w-12 h-12 rounded-lg flex items-center justify-center">
-                            <i class="fa-solid ${session.icon} text-brand-green text-2xl"></i>
-                        </div>
-                        <div>
-                            <p class="text-white font-semibold">${session.casino}</p>
-                            <p class="text-brand-text text-sm">${session.date}</p>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                         <p class="${session.net >= 0 ? 'text-brand-green' : 'text-brand-red'} font-bold text-lg">
-                            ${session.net >= 0 ? '+$' : '-$'} ${Math.abs(session.net).toFixed(2)}
-                         </p>
-                         <p class="text-brand-text text-sm">${session.net >= 0 ? 'Net Win' : 'Net Loss'}</p>
-                    </div>
-                `;
-                sessionsList.prepend(sessionElement); // Add to the top
-            }
+    // =============
+    // Tabs
+    // =============
+    const navItems = document.querySelectorAll('.nav-item');
+    const tabContents = document.querySelectorAll('.tab-content');
+    function switchTab(tab){
+      tabContents.forEach(c => c.classList.toggle('hidden', c.id !== 'tab-'+tab));
+      navItems.forEach(i => {
+        const active = i.dataset.tab === tab;
+        i.classList.toggle('text-brand-green', active);
+        i.classList.toggle('text-brand-text', !active);
+      });
+      if(tab==='plan') renderPlanTab();
+      if(tab==='learn') renderLearnTab();
+      if(tab==='journal') renderJournalTab();
+      if(tab==='safety') renderSafetyTab();
+      if(tab==='reports') renderReportsTab();
+    }
+    navItems.forEach(item => item.addEventListener('click', ()=> switchTab(item.dataset.tab)));
 
-            function loadInitialSessions() {
-                sessionData = [...initialSessions];
-                // Render in reverse order so the latest are on top when using prepend
-                sessionData.slice().reverse().forEach(session => renderSession(session));
-                updateAnalyticsSummary();
-                // Charts will be rendered on first analytics tab view
-            }
+    // Bolt quick deposit
+    $('#add-session-btn').addEventListener('click', ()=>{
+      const v = prompt('Quick deposit amount ($):','20');
+      const n = Number(v);
+      if(isNaN(n) || n<=0) return;
+      state.plan.bankroll += n;
+      state.activity.push({type:'deposit', title:'Quick Deposit', amount:n, ts:now()});
+      save(); renderPlanKPI(); renderActivity(); renderReportsTab();
+      toast('Deposit saved');
+    });
 
-            // --- Modal Logic ---
-            function showModal() {
-                sessionModal.classList.remove('hidden');
-                // Reset form fields
-                modalAmountInput.value = '';
-                // Set default date to today
-                modalDateInput.valueAsDate = new Date(); 
-                modalCasinoSelect.value = 'Bellagio Casino';
-                modalOtherCasinoNameInput.value = ''; // Reset custom input
-                modalOtherCasinoNameInput.classList.add('hidden'); // Hide custom input by default
-                
-                // Reset result type to Win and icon to gem
-                selectResultType('win');
-                selectIcon('fa-gem');
-            }
-
-            function hideModal() {
-                sessionModal.classList.add('hidden');
-            }
-
-            function selectResultType(type) {
-                selectedResultType = type;
-                modalResultWinBtn.dataset.selected = (type === 'win');
-                modalResultLossBtn.dataset.selected = (type === 'loss');
-            }
-
-            function selectIcon(iconClass) {
-                selectedIcon = iconClass;
-                document.querySelectorAll('.icon-option').forEach(btn => {
-                    btn.dataset.selected = (btn.dataset.icon === iconClass);
-                });
-            }
-
-            addSessionBtn.addEventListener('click', showModal);
-            modalCancelBtn.addEventListener('click', hideModal);
-            modalResultWinBtn.addEventListener('click', () => selectResultType('win'));
-            modalResultLossBtn.addEventListener('click', () => selectResultType('loss'));
-            modalIconSelection.addEventListener('click', (event) => {
-                const target = event.target.closest('.icon-option');
-                if (target) {
-                    selectIcon(target.dataset.icon);
-                }
-            });
-
-            // New: Event listener for casino select dropdown to show/hide custom input
-            modalCasinoSelect.addEventListener('change', function() {
-                if (this.value === 'Other') {
-                    modalOtherCasinoNameInput.classList.remove('hidden');
-                    modalOtherCasinoNameInput.focus(); // Focus on the new input
-                } else {
-                    modalOtherCasinoNameInput.classList.add('hidden');
-                }
-            });
-
-            modalSaveBtn.addEventListener('click', () => {
-                const amount = parseFloat(modalAmountInput.value);
-                const date = modalDateInput.value; // YYYY-MM-DD
-                let casino = modalCasinoSelect.value;
-
-                // If "Other" is selected, use the custom input's value
-                if (casino === 'Other') {
-                    casino = modalOtherCasinoNameInput.value.trim();
-                    if (!casino) { // Validate if custom casino name is provided
-                        alert('Please enter a casino name for "Other".');
-                        return;
-                    }
-                }
-
-                if (isNaN(amount) || !date || !casino) {
-                    alert('Please fill in all session details.');
-                    return;
-                }
-
-                const netAmount = selectedResultType === 'win' ? Math.abs(amount) : -Math.abs(amount);
-                
-                // Format date for display (e.g., "Oct 15, 2025")
-                const dateObj = new Date(date);
-                const formattedDate = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-
-                const newSession = {
-                    id: sessionData.length + 1,
-                    casino: casino,
-                    date: formattedDate,
-                    net: netAmount,
-                    icon: selectedIcon
-                };
-                
-                sessionData.push(newSession);
-                renderSession(newSession); // Add to UI
-                updateAnalyticsSummary(); // Recalculate totals
-                
-                // Re-render charts
-                if (winLossChart) winLossChart.destroy(); 
-                if (casinoPerformanceChart) casinoPerformanceChart.destroy(); 
-                renderAnalyticsCharts(); 
-
-                hideModal(); // Close modal
-            });
-            // --- End Modal Logic ---
-
-
-            function switchTab(tabName) {
-                tabContents.forEach(content => {
-                    if (content.id === `tab-${tabName}`) {
-                        content.classList.remove('hidden');
-                    } else {
-                        content.classList.add('hidden');
-                    }
-                });
-
-                navItems.forEach(item => {
-                    if (item.dataset.tab === tabName) {
-                        item.classList.remove('text-brand-text');
-                        item.classList.add('text-brand-green');
-                    } else {
-                        item.classList.remove('text-brand-green');
-                        item.classList.add('text-brand-text');
-                    }
-                });
-                
-                if (tabName === 'analytics') {
-                    // This check ensures charts are only rendered once or if data changes/they are destroyed.
-                    // Highcharts.chart returns the chart object, so checking for its existence is fine.
-                    // Also checking if it's already 'rendered' into a DOM element.
-                    if (!winLossChart || winLossChart.renderTo.id !== 'win-loss-chart' || !casinoPerformanceChart || casinoPerformanceChart.renderTo.id !== 'casino-performance-chart') {
-                        renderAnalyticsCharts(); 
-                    } else {
-                        // If charts already exist, ensure they reflow if the container size changed
-                        winLossChart.reflow();
-                        casinoPerformanceChart.reflow();
-                    }
-                }
-            }
-            
-            navItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const tabName = item.dataset.tab;
-                    switchTab(tabName);
-                });
-            });
-
-            function updateAnalyticsSummary() {
-                const totalNet = sessionData.reduce((sum, session) => sum + session.net, 0);
-                const totalWins = sessionData.filter(session => session.net >= 0).length;
-                const totalSessions = sessionData.length;
-                const winRate = totalSessions > 0 ? (totalWins / totalSessions * 100).toFixed(0) : 0;
-
-                totalNetWinningsElement.textContent = `${totalNet >= 0 ? '+$' : '-$'}${Math.abs(totalNet).toFixed(2)}`;
-                totalNetWinningsElement.classList.toggle('text-brand-green', totalNet >= 0);
-                totalNetWinningsElement.classList.toggle('text-brand-red', totalNet < 0);
-                winRateElement.textContent = `${winRate}%`;
-            }
-
-            function renderAnalyticsCharts() {
-                // Highcharts struggles with rendering in hidden elements.
-                // Ensure chart containers are momentarily visible if the analytics tab is active.
-                // This approach ensures they are drawn correctly.
-                const analyticsTab = document.getElementById('tab-analytics');
-                const isAnalyticsTabActive = !analyticsTab.classList.contains('hidden');
-
-                if (!isAnalyticsTabActive) {
-                    // Temporarily make it visible if not active to allow Highcharts to render correctly
-                    analyticsTab.style.visibility = 'hidden';
-                    analyticsTab.classList.remove('hidden');
-                }
-
-
-                // Prepare data for charts, sorting by date for time-series chart
-                const sortedSessionData = [...sessionData].sort((a, b) => {
-                    // Parse "Oct 15, 2025" into Date objects for comparison
-                    const dateA = new Date(a.date.replace(/(\w{3})\s(\d{1,2}),\s(\d{4})/, '$1 $2 $3'));
-                    const dateB = new Date(b.date.replace(/(\w{3})\s(\d{1,2}),\s(\d{4})/, '$1 $2 $3'));
-                    return dateA - dateB;
-                });
-                const categories = sortedSessionData.map(s => s.date);
-                const netResults = sortedSessionData.map(s => s.net);
-
-                const casinoPerformance = sortedSessionData.reduce((acc, session) => {
-                    acc[session.casino] = (acc[session.casino] || 0) + session.net;
-                    return acc;
-                }, {});
-
-                const casinoNames = Object.keys(casinoPerformance);
-                const casinoNetValues = casinoNames.map(name => ({
-                    name: name, // Ensure name is passed for tooltip
-                    y: casinoPerformance[name],
-                    color: casinoPerformance[name] >= 0 ? '#32D74B' : '#FF453A'
-                }));
-
-                // Win/Loss Chart
-                winLossChart = Highcharts.chart('win-loss-chart', {
-                    chart: {
-                        type: 'area',
-                        backgroundColor: 'transparent',
-                        style: { fontFamily: 'Inter' }
-                    },
-                    title: { text: null },
-                    credits: { enabled: false },
-                    xAxis: {
-                        categories: categories,
-                        labels: { style: { color: '#A6B0C3' } },
-                        lineColor: '#2C313A',
-                        tickColor: '#2C313A'
-                    },
-                    yAxis: {
-                        title: { text: null },
-                        labels: { 
-                            style: { color: '#A6B0C3' },
-                            format: '${value}'
-                        },
-                        gridLineColor: '#1A1D23'
-                    },
-                    legend: { enabled: false },
-                    tooltip: {
-                        backgroundColor: '#0D0F13',
-                        borderColor: '#2C313A',
-                        style: { color: '#FFFFFF' },
-                        formatter: function () {
-                            return `<b>${this.x}</b><br/>Net: <b>$${this.y.toFixed(2)}</b>`;
-                        }
-                    },
-                    plotOptions: {
-                        area: {
-                            marker: {
-                                enabled: true,
-                                symbol: 'circle',
-                                radius: 4,
-                                states: { hover: { enabled: true } }
-                            }
-                        }
-                    },
-                    series: [{
-                        name: 'Net Result',
-                        data: netResults,
-                        color: '#32D74B', // Green for positive
-                        negativeColor: '#FF453A', // Red for negative
-                        fillColor: {
-                            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                            stops: [
-                                [0, Highcharts.color('#32D74B').setOpacity(0.5).get('rgba')],
-                                [1, Highcharts.color('#32D74B').setOpacity(0).get('rgba')]
-                            ]
-                        },
-                         negativeFillColor: {
-                            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                            stops: [
-                                [0, Highcharts.color('#FF453A').setOpacity(0.5).get('rgba')],
-                                [1, Highcharts.color('#FF453A').setOpacity(0).get('rgba')]
-                            ]
-                        }
-                    }]
-                });
-
-                // Casino Performance Chart
-                casinoPerformanceChart = Highcharts.chart('casino-performance-chart', {
-                    chart: {
-                        type: 'bar',
-                        backgroundColor: 'transparent',
-                        style: { fontFamily: 'Inter' }
-                    },
-                    title: { text: null },
-                    credits: { enabled: false },
-                    xAxis: {
-                        categories: casinoNames,
-                        labels: { style: { color: '#A6B0C3' } },
-                        lineColor: '#2C313A'
-                    },
-                    yAxis: {
-                        title: { text: null },
-                        labels: { style: { color: '#A6B0C3' }, format: '${value}' },
-                        gridLineColor: '#1A1D23'
-                    },
-                    legend: { enabled: false },
-                    tooltip: {
-                        backgroundColor: '#0D0F13',
-                        borderColor: '#2C313A',
-                        style: { color: '#FFFFFF' },
-                        formatter: function () {
-                            return `<b>${this.key}</b><br/>Net: <b>$${this.y.toFixed(2)}</b>`;
-                        }
-                    },
-                    plotOptions: {
-                        bar: {
-                            borderRadius: 4,
-                            borderWidth: 0
-                        }
-                    },
-                    series: [{
-                        name: 'Net Winnings by Casino',
-                        data: casinoNetValues
-                    }]
-                });
-
-                if (!isAnalyticsTabActive) {
-                    // Hide it again if it was originally hidden
-                    analyticsTab.classList.add('hidden');
-                    analyticsTab.style.visibility = ''; // Reset visibility
-                }
-            }
-
-            // Initial state: load sessions and show 'Sessions' tab by default
-            loadInitialSessions();
-            switchTab('sessions');
+    // =============
+    // PLAN tab
+    // =============
+    function renderPlanKPI(){
+      $('#kpi-bankroll').textContent = fmt(state.plan.bankroll);
+      $('#kpi-target').textContent = fmt(state.plan.target);
+      const p = clamp(state.plan.riskPct,1,100);
+      $('#kpi-risk').textContent = p+'%';
+      const r = riskLabel(p);
+      const rn = $('#risk-note'); rn.textContent = r.text; rn.className = 'text-xs mt-1 ' + r.color;
+      const prog = clamp(state.plan.progressWeek, 0, 100);
+      $('#bar-week').style.width = prog + '%';
+      $('#week-desc').textContent = prog>0 ? `Week progress: ${prog}%` : 'No plan started yet';
+    }
+    function renderCategories(){
+      const cont = $('#cats'); cont.innerHTML='';
+      const all = ['Slots','Live','Roulette','Blackjack','Baccarat','Poker','Craps','Other'];
+      all.forEach(name=>{
+        const on = state.plan.categories.includes(name);
+        const btn = document.createElement('button');
+        btn.className = `px-3 py-2 rounded-full border text-xs ${on?'border-brand-green text-white bg-brand-green/10':'border-brand-light-gray text-brand-text bg-brand-dark'}`;
+        btn.textContent = name;
+        btn.addEventListener('click', ()=>{
+          const i = state.plan.categories.indexOf(name);
+          if(i>=0) state.plan.categories.splice(i,1); else state.plan.categories.push(name);
+          save(); renderCategories();
         });
-    </script>
+        cont.appendChild(btn);
+      });
+    }
+    function renderHabits(){
+      const list = $('#weekly-checklist'); list.innerHTML='';
+      state.plan.habits.forEach(h=>{
+        const row = document.createElement('div');
+        row.className = 'flex items-start space-x-3 bg-brand-dark border border-brand-light-gray rounded-xl p-3';
+        row.innerHTML = `
+          <button class="w-6 h-6 rounded-md flex items-center justify-center ${h.done?'bg-brand-green text-black':'bg-brand-dark border border-brand-light-gray text-brand-text'}" aria-label="toggle habit">
+            ${h.done?'<i class="fa-solid fa-check text-xs"></i>':''}
+          </button>
+          <div>
+            <p class="text-white text-sm font-medium">${h.title}</p>
+            <p class="text-brand-text text-xs">Daily</p>
+          </div>
+        `;
+        row.querySelector('button').addEventListener('click', ()=>{
+          h.done = !h.done;
+          state.plan.progressWeek = Math.round(100 * state.plan.habits.filter(x=>x.done).length / Math.max(1, state.plan.habits.length));
+          save(); renderHabits(); renderPlanKPI();
+        });
+        list.appendChild(row);
+      });
+    }
+    function renderActivity(){
+      const list = $('#activity'); const empty = $('#empty-activity');
+      list.innerHTML='';
+      if(!state.activity.length){ empty.classList.remove('hidden'); return; }
+      empty.classList.add('hidden');
+      state.activity.slice().reverse().slice(0,12).forEach(a=>{
+        const item = document.createElement('div');
+        item.className = 'bg-brand-dark border border-brand-light-gray rounded-xl p-3 flex items-center justify-between';
+        item.innerHTML = `
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-lg bg-brand-light-gray/40 flex items-center justify-center">
+              <i class="fa-solid ${a.type==='deposit'?'fa-circle-arrow-up text-brand-green':(a.type==='withdraw'?'fa-circle-arrow-down text-brand-red':(a.type==='cooloff'?'fa-snowflake text-brand-blue':'fa-note-sticky text-brand-purple'))}"></i>
+            </div>
+            <div>
+              <p class="text-white text-sm font-semibold">${a.title}</p>
+              <p class="text-brand-text text-xs">${new Date(a.ts).toLocaleString()}</p>
+            </div>
+          </div>
+          <div class="text-right">
+            ${typeof a.amount === 'number'
+              ? `<p class="${a.amount>=0?'text-brand-green':'text-brand-red'} font-bold text-sm">${a.amount>=0?'+':''}${fmt(a.amount)}</p>`
+              : '<p class="text-brand-text text-sm">—</p>'}
+          </div>
+        `;
+        list.appendChild(item);
+      });
+    }
+    function bindPlanInputs(){
+      $('#inp-bankroll').value = state.plan.bankroll || '';
+      $('#inp-target').value = state.plan.target || '';
+      $('#inp-weekly').value = state.plan.weekly || '';
+      $('#inp-risk').value = state.plan.riskPct || 5;
+      $('#sel-goal').value = state.plan.goal || 'save';
+    }
+    function renderPlanTab(){
+      bindPlanInputs();
+      renderPlanKPI();
+      renderCategories();
+      renderHabits();
+      renderActivity();
+    }
+    $('#btn-save-plan').addEventListener('click', ()=>{
+      const b = Number($('#inp-bankroll').value||0);
+      const t = Number($('#inp-target').value||0);
+      const w = Number($('#inp-weekly').value||0);
+      const r = clamp(Number($('#inp-risk').value||5), 1, 100);
+      const g = $('#sel-goal').value;
+      state.plan.bankroll=b; state.plan.target=t; state.plan.weekly=w; state.plan.riskPct=r; state.plan.goal=g;
+      state.activity.push({type:'plan', title:'Plan updated', amount:null, ts:now()});
+      save(); renderPlanTab(); renderReportsTab(); toast('Plan saved');
+    });
+    // Quick actions
+    $('#act-log-deposit').addEventListener('click', ()=>{
+      const v = prompt('Deposit amount ($):','50');
+      const n = Number(v); if(isNaN(n)||n<=0) return;
+      state.plan.bankroll += n;
+      state.activity.push({type:'deposit', title:'Deposit', amount:n, ts:now()});
+      save(); renderPlanTab(); renderReportsTab(); toast('Deposit saved');
+    });
+    $('#act-log-withdraw').addEventListener('click', ()=>{
+      const v = prompt('Withdrawal amount ($):','20');
+      const n = Number(v); if(isNaN(n)||n<=0) return;
+      state.plan.bankroll = Math.max(0, state.plan.bankroll - n);
+      state.activity.push({type:'withdraw', title:'Withdrawal', amount:-n, ts:now()});
+      save(); renderPlanTab(); renderReportsTab(); toast('Withdrawal saved');
+    });
+    $('#act-mark-cooloff').addEventListener('click', ()=>{
+      const d = Number(prompt('Cool‑off days (0..30):','3'));
+      if(isNaN(d)||d<0) return;
+      state.safety.coolOffDays = d;
+      state.safety.coolOffUntil = d ? new Date(now()+d*24*3600*1000).toISOString() : null;
+      state.activity.push({type:'cooloff', title:`Cool‑off ${d} day(s)`, amount:null, ts:now()});
+      save(); renderPlanTab(); renderSafetyTab(); toast('Cool‑off scheduled');
+    });
+    $('#act-add-habit').addEventListener('click', ()=>{
+      const name = prompt('New habit:','Drink water before session');
+      if(!name) return;
+      state.plan.habits.push({id:'h'+Math.random().toString(36).slice(2,7), title:name, done:false});
+      save(); renderPlanTab(); toast('Habit added');
+    });
+
+    // =============
+    // LEARN tab
+    // =============
+    function renderLearnTab(){
+      const container = $('#course'); container.innerHTML='';
+      state.course.forEach(step=>{
+        const row = document.createElement('div');
+        row.className = 'flex items-start space-x-3 bg-brand-dark border border-brand-light-gray rounded-xl p-3';
+        row.innerHTML = `
+          <button class="w-6 h-6 rounded-md flex items-center justify-center ${step.done?'bg-brand-green text-black':'bg-brand-dark border border-brand-light-gray text-brand-text'}" aria-label="toggle course step">
+            ${step.done?'<i class="fa-solid fa-check text-xs"></i>':''}
+          </button>
+          <div class="text-white text-sm">${step.text}</div>
+        `;
+        row.querySelector('button').addEventListener('click', ()=>{
+          step.done = !step.done; save(); updateCourseProgress(); renderLearnTab();
+        });
+        container.appendChild(row);
+      });
+      updateCourseProgress();
+    }
+    function updateCourseProgress(){
+      const total = state.course.length;
+      const done = state.course.filter(s=>s.done).length;
+      const pct = Math.round(100*done/Math.max(1,total));
+      $('#course-progress').style.width = pct+'%';
+      $('#course-note').textContent = `${done}/${total} completed`;
+      save();
+    }
+
+    // =============
+    // JOURNAL tab
+    // =============
+    function renderJournalTab(){
+      $('#j-good').value = '';
+      $('#j-bad').value = '';
+      $('#j-time').value = '';
+      $('#j-mood').value = '😐 Neutral';
+      const list = $('#journal-entries'); const empty = $('#empty-journal');
+      list.innerHTML='';
+      if(!state.journal.length){ empty.classList.remove('hidden'); return; }
+      empty.classList.add('hidden');
+      state.journal.slice().reverse().forEach(j=>{
+        const row = document.createElement('div');
+        row.className = 'bg-brand-dark border border-brand-light-gray rounded-xl p-3 flex items-center justify-between';
+        row.innerHTML = `
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-lg bg-brand-light-gray/40 flex items-center justify-center">
+              <i class="fa-solid fa-book text-brand-green"></i>
+            </div>
+            <div>
+              <p class="text-white text-sm font-semibold">${j.mood} • ${new Date(j.ts).toLocaleString()}</p>
+              <p class="text-brand-text text-xs">${(j.good||'').slice(0,80)}${(j.good||'').length>80?'…':''}</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-brand-text text-xs">${j.time||0} min</p>
+          </div>
+        `;
+        list.appendChild(row);
+      });
+    }
+    $('#btn-save-journal').addEventListener('click', ()=>{
+      const good = $('#j-good').value.trim();
+      const bad = $('#j-bad').value.trim();
+      const mood = $('#j-mood').value;
+      const time = Number($('#j-time').value||0);
+      if(!good && !bad) return toast('Write something first');
+      state.journal.push({good,bad,mood,time,ts:now()});
+      save(); renderJournalTab(); toast('Entry saved');
+    });
+
+    // =============
+    // SAFETY tab
+    // =============
+    function renderSafetyTab(){
+      $('#set-time-limit').value = state.safety.timeLimit || '';
+      $('#set-loss-cap').value = state.safety.lossCap || '';
+      $('#set-cooloff-days').value = state.safety.coolOffDays || '';
+      const status = state.safety.coolOffUntil
+        ? `Cool‑off until ${new Date(state.safety.coolOffUntil).toLocaleString()}`
+        : 'No cool‑off scheduled';
+      $('#cooloff-status').textContent = status;
+    }
+    $('#apply-time-limit').addEventListener('click', ()=>{
+      const v = Number($('#set-time-limit').value||0);
+      state.safety.timeLimit = v>0?v:0; save(); toast('Time limit saved');
+    });
+    $('#apply-loss-cap').addEventListener('click', ()=>{
+      const v = Number($('#set-loss-cap').value||0);
+      state.safety.lossCap = v>0?v:0; save(); toast('Loss cap saved');
+    });
+    $('#btn-apply-cooloff').addEventListener('click', ()=>{
+      const d = Number($('#set-cooloff-days').value||0);
+      if(isNaN(d)||d<0) return toast('Enter valid days');
+      state.safety.coolOffDays = d;
+      state.safety.coolOffUntil = d ? new Date(now()+d*24*3600*1000).toISOString() : null;
+      save(); renderSafetyTab(); toast('Cool‑off updated');
+    });
+
+    // Export / Import / Clear
+    $('#btn-export').addEventListener('click', ()=>{
+      const blob = new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url; a.download='bankrollcoach_backup.json'; a.click();
+      URL.revokeObjectURL(url);
+      toast('Exported');
+    });
+    $('#btn-import').addEventListener('click', ()=> $('#file-import').click());
+    $('#file-import').addEventListener('change', async (e)=>{
+      const file = e.target.files?.[0];
+      if(!file) return;
+      try{
+        const text = await file.text();
+        const obj = JSON.parse(text);
+        if(typeof obj === 'object'){
+          Object.assign(state, obj);
+          state.plan = Object.assign({
+            bankroll:0,target:0,weekly:0,riskPct:5,goal:'save',categories:[],habits:[],progressWeek:0
+          }, state.plan||{});
+          state.safety = Object.assign({timeLimit:0,lossCap:0,coolOffDays:0,coolOffUntil:null}, state.safety||{});
+          if(!Array.isArray(state.course)) state.course=[];
+          if(!Array.isArray(state.activity)) state.activity=[];
+          if(!Array.isArray(state.journal)) state.journal=[];
+          save();
+          renderPlanTab(); renderLearnTab(); renderJournalTab(); renderSafetyTab(); renderReportsTab();
+          toast('Imported');
+        } else {
+          toast('Invalid file');
+        }
+      } catch(err){
+        console.error(err); toast('Import failed');
+      } finally {
+        e.target.value = '';
+      }
+    });
+    $('#btn-clear').addEventListener('click', ()=>{
+      if(!confirm('This will clear all local data. Continue?')) return;
+      removeItemSafe(storeKey);
+      memoryStore.clear?.();
+      location.reload();
+    });
+
+    // =============
+    // REPORTS tab
+    // =============
+    function summarizePeriod(days=30){
+      const cutoff = now() - days*24*3600*1000;
+      const recent = state.activity.filter(a=>a.ts>=cutoff);
+      let dep=0, wit=0, sessions=0;
+      recent.forEach(a=>{
+        if(a.type==='deposit') dep += a.amount||0;
+        if(a.type==='withdraw') wit += Math.abs(a.amount||0);
+        if(a.type==='session') sessions += 1;
+      });
+      return {dep, wit, net: dep - wit, sessions, recent};
+    }
+    function renderCompliance(){
+      const ul = $('#rep-compliance'); ul.innerHTML='';
+      const items = [];
+      // Loss cap check (approx: sum of net negative days)
+      const cap = Number(state.safety.lossCap||0);
+      if(cap>0){
+        const byDay = {};
+        state.activity.forEach(a=>{
+          const d = new Date(a.ts).toDateString();
+          byDay[d] ??= 0;
+          if(a.type==='deposit') byDay[d] += a.amount||0;
+          if(a.type==='withdraw') byDay[d] -= Math.abs(a.amount||0);
+        });
+        const breaches = Object.values(byDay).filter(x=>x < -cap).length;
+        items.push(breaches===0
+          ? `Loss cap OK: no daily breaches detected.`
+          : `Loss cap breaches: ${breaches} day(s) exceeded the cap.`);
+      } else {
+        items.push('Loss cap not set.');
+      }
+      // Time limit check using journal "time spent"
+      const tlim = Number(state.safety.timeLimit||0);
+      if(tlim>0){
+        const byDay = {};
+        state.journal.forEach(j=>{
+          const d = new Date(j.ts).toDateString();
+          byDay[d] ??= 0;
+          byDay[d] += Number(j.time||0);
+        });
+        const breaches = Object.values(byDay).filter(x=>x > tlim).length;
+        items.push(breaches===0
+          ? `Time limit OK: no daily breaches detected.`
+          : `Time limit breaches: ${breaches} day(s) exceeded the limit.`);
+      } else {
+        items.push('Time limit not set.');
+      }
+      // Cool-off status
+      if(state.safety.coolOffUntil){
+        const until = new Date(state.safety.coolOffUntil);
+        const active = until.getTime() > now();
+        items.push(active ? `Cool‑off active until ${until.toLocaleString()}.` : `Cool‑off expired.`);
+      } else {
+        items.push('No cool‑off scheduled.');
+      }
+      items.forEach(t=>{
+        const li = document.createElement('li'); li.textContent = t; ul.appendChild(li);
+      });
+    }
+    function renderReportsTab(){
+      const {dep, wit, net, sessions, recent} = summarizePeriod(30);
+      $('#rep-deposits').textContent = fmt(dep);
+      $('#rep-withdrawals').textContent = fmt(wit);
+      const netEl = $('#rep-net'); netEl.textContent = fmt(net);
+      netEl.className = 'text-white text-xl font-bold ' + (net>=0?'text-brand-green':'text-brand-red');
+      $('#rep-sessions').textContent = String(sessions);
+
+      // Activity feed
+      const list = $('#rep-activity'); list.innerHTML='';
+      recent.slice().reverse().slice(0,30).forEach(a=>{
+        const row = document.createElement('div');
+        row.className = 'bg-brand-dark border border-brand-light-gray rounded-xl p-3 flex items-center justify-between';
+        row.innerHTML = `
+          <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded-lg bg-brand-light-gray/40 flex items-center justify-center">
+              <i class="fa-solid ${a.type==='deposit'?'fa-circle-arrow-up text-brand-green':(a.type==='withdraw'?'fa-circle-arrow-down text-brand-red':(a.type==='cooloff'?'fa-snowflake text-brand-blue':'fa-note-sticky text-brand-purple'))}"></i>
+            </div>
+            <div>
+              <p class="text-white text-sm font-semibold">${a.title}</p>
+              <p class="text-brand-text text-xs">${new Date(a.ts).toLocaleString()}</p>
+            </div>
+          </div>
+          <div class="text-right">
+            ${typeof a.amount === 'number'
+              ? `<p class="${a.amount>=0?'text-brand-green':'text-brand-red'} font-bold text-sm">${a.amount>=0?'+':''}${fmt(a.amount)}</p>`
+              : '<p class="text-brand-text text-sm">—</p>'}
+          </div>
+        `;
+        list.appendChild(row);
+      });
+
+      renderCompliance();
+    }
+
+    // =============
+    // Init
+    // =============
+    load();
+    switchTab('plan');
+</script>
 
 
 </body></html>
