@@ -1,12 +1,12 @@
 PODS:
-  - appsflyer_sdk (6.17.3):
-    - appsflyer_sdk/Core (= 6.17.3)
-  - appsflyer_sdk/Core (6.17.3):
-    - AppsFlyerFramework (= 6.17.5)
+  - appsflyer_sdk (6.17.7):
+    - appsflyer_sdk/Core (= 6.17.7)
+  - appsflyer_sdk/Core (6.17.7):
+    - AppsFlyerFramework (= 6.17.7)
     - Flutter
-  - AppsFlyerFramework (6.17.5):
-    - AppsFlyerFramework/Main (= 6.17.5)
-  - AppsFlyerFramework/Main (6.17.5)
+  - AppsFlyerFramework (6.17.7):
+    - AppsFlyerFramework/Main (= 6.17.7)
+  - AppsFlyerFramework/Main (6.17.7)
   - connectivity_plus (0.0.1):
     - Flutter
     - ReachabilitySwift
@@ -164,8 +164,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/darwin"
 
 SPEC CHECKSUMS:
-  appsflyer_sdk: 323f018dc19f03c0c2500e6e4ceef52ae6f7685e
-  AppsFlyerFramework: da52a40c07c9f81a7829952e0fd854b6eacf5a7d
+  appsflyer_sdk: a6fdf00590a89e91bd9794815691ab8738e465b9
+  AppsFlyerFramework: ae7caf1688348f2d7a742037bd4fc6966d39d362
   connectivity_plus: bf0076dd84a130856aa636df1c71ccaff908fa1d
   device_info_plus: 97af1d7e84681a90d0693e63169a5d50e0839a0d
   Firebase: 0312a2352584f782ea56f66d91606891d4607f06
@@ -183,13 +183,13 @@ SPEC CHECKSUMS:
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
   package_info_plus: c0502532a26c7662a62a356cebe2692ec5fe4ec4
-  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+  path_provider_foundation: 0b743cbb62d8e47eab856f09262bb8c1ddcfe6ba
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   ReachabilitySwift: 32793e867593cfc1177f5d16491e3a197d2fccda
-  shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
-  url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
+  shared_preferences_foundation: 5086985c1d43c5ba4d5e69a4e8083a389e2909e6
+  url_launcher_ios: bb13df5870e8c4234ca12609d04010a21be43dfa
   webview_flutter_wkwebview: 29eb20d43355b48fe7d07113835b9128f84e3af4
 
-PODFILE CHECKSUM: 3c63482e143d1b91d2d2560aee9fb04ecc74ac7e
+PODFILE CHECKSUM: fa1c758b2b6838d3b196938c25c2f243c02da750
 
 COCOAPODS: 1.16.2
