@@ -1,74 +1,105 @@
-<!DOCTYPE html><html lang="en"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="en"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com; frame-src 'self' https://www.youtube.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
-    <title>Bankroll Coach (Casino‑Safe)</title>
+    <title>Bankroll Coach (Casino‑Safe) — Enhanced</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };</script>
+    <script>window.FontAwesomeConfig={autoReplaceSvg:'nest'};</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        ::-webkit-scrollbar { display: none; }
-        body { -ms-overflow-style: none; scrollbar-width: none; font-family: 'Inter', sans-serif; }
-        #app-content { -webkit-overflow-scrolling: touch; }
-        html, body { height: 100%; overflow: hidden; }
-        #mobile-app-container { height: 100%; width: 100%; max-width: none !important; max-height: none !important; border-radius: 0 !important; box-shadow: none !important; }
+        ::-webkit-scrollbar{display:none}
+        html,body{height:100%;overflow:hidden}
+        body{-ms-overflow-style:none;scrollbar-width:none;font-family:'Inter',sans-serif}
+        #app-content{-webkit-overflow-scrolling:touch}
+        #mobile-app-container{height:100%;width:100%;max-width:none!important;max-height:none!important;border-radius:0!important;box-shadow:none!important}
+        .chip{transition:all .15s ease}
+        .chip:active{transform:scale(.98)}
+        .btn{transition:all .15s ease}
+        .btn:active{transform:scale(.98)}
+        .ring-focus:focus{outline:none; box-shadow:0 0 0 3px rgba(50,215,75,.35)}
+        .pulse-soft{animation:pulseSoft 1.8s infinite}
+        @keyframes pulseSoft{0%{opacity:1}50%{opacity:.55}100%{opacity:1}}
+        .progress-slim{height:10px;border-radius:9999px;overflow:hidden}
+        .kpi-card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));border:1px solid rgba(255,255,255,.08)}
+        .meter-bar{height:6px;border-radius:8px;overflow:hidden}
+        .countdown-dot{width:8px;height:8px;border-radius:9999px}
+        .sparkline{height:34px}
+        .sparkline path{fill:none;stroke-width:2}
     </style>
     <script>
         tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                'brand-dark': '#0D0F13',
-                'brand-gray': '#1A1D23',
-                'brand-light-gray': '#2C313A',
-                'brand-text': '#A6B0C3',
-                'brand-green': '#32D74B',
-                'brand-red': '#FF453A',
-                'brand-blue': '#0A84FF',
-                'brand-warning': '#FFB020',
-                'brand-purple': '#8A5CF6'
-              }
+          theme: { extend: {
+            colors: {
+              'brand-dark':'#0D0F13',
+              'brand-gray':'#1A1D23',
+              'brand-light-gray':'#2C313A',
+              'brand-text':'#A6B0C3',
+              'brand-green':'#32D74B',
+              'brand-red':'#FF453A',
+              'brand-blue':'#0A84FF',
+              'brand-warning':'#FFB020',
+              'brand-purple':'#8A5CF6'
             }
-          }
+          }}
         }
     </script>
-    <script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.3f7572448765332f3047.js"></script></head>
+</head>
 <body class="bg-black flex justify-center items-center min-h-screen">
 <div id="mobile-app-container" class="w-full h-full bg-brand-dark overflow-hidden relative flex flex-col mx-auto">
-    <main id="app-content" class="flex-grow overflow-y-auto pb-28">
+    <main id="app-content" class="flex-grow overflow-y-auto pb-32">
 
         <!-- Header -->
         <div class="px-5 pt-12">
             <div class="flex justify-between items-center mb-6">
                 <div class="flex items-center space-x-2">
-                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M16.0002 4.41309C15.148 4.41309 14.3217 4.70014 13.6394 5.21094L6.15137 11.213C5.00049 12.1449 5.31885 13.9785 6.75635 14.428L13.8867 16.6865C15.002 17.0371 16.2412 16.7828 17.1133 16.0337L25.8491 8.78711C26.9995 7.85547 26.6812 6.02148 25.2437 5.57227L18.1133 3.31348C17.4722 3.08464 16.7295 3.16732 16.1035 3.52441C15.938 3.63184 15.7871 3.75879 15.6562 3.89648L11.5586 7.99414L16.0002 11.667L20.4419 7.99414L16.0002 4.41309Z" fill="#32D74B"></path>
-                        <path d="M25.2437 27.5869L18.1133 29.8457C17.4722 30.0745 16.7295 29.9918 16.1035 29.6347C15.938 29.5273 15.7871 29.4004 15.6562 29.2627L11.5586 25.165L16.0002 21.4922L20.4419 25.165L25.8491 20.375C26.9995 19.4434 26.6812 17.6094 25.2437 17.1602L18.1133 14.8945C17.4722 14.6657 16.7295 14.7484 16.1035 15.1055C15.938 15.2129 15.7871 15.3398 15.6562 15.4775L6.15137 24.9824C5.00049 26.1328 5.31885 27.9668 6.75635 28.416L13.8867 30.6816C15.002 31.0322 16.2412 30.7779 17.1133 30.0288L25.2437 27.5869Z" fill="#32D74B"></path>
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                        <path d="M16.0002 4.41309c-.8522 0-1.6785.28705-2.3608.79785L6.15137 11.213c-1.15088.9319-.83252 2.7655.60498 3.215l7.13035 2.2585c1.1153.3506 2.3545.0963 3.2266-.6528l8.7358-7.2466c1.1504-.93164.8321-2.76563-.6054-3.21484l-7.1304-2.25879c-.6411-.22884-1.3838-.14616-2.0098.21093-.1655.10743-.3164.23438-.4473.37207L11.5586 7.99414 16.0002 11.667 20.4419 7.99414 16.0002 4.41309Z" fill="#32D74B"></path>
+                        <path d="M25.2437 27.5869l-7.1304 2.2588c-.6411.2288-1.3838.1461-2.0098-.211-.1655-.1074-.3164-.2343-.4473-.372L11.5586 25.165 16.0002 21.4922 20.4419 25.165 25.8491 20.375c1.1504-.9316.8321-2.7656-.6054-3.2148l-7.1304-2.2657c-.6411-.2288-1.3838-.1461-2.0098.211-.1655.1074-.3164.2343-.4473.372L6.15137 24.9824c-1.15088 1.1504-.83252 2.9844.60498 3.4336l7.13035 2.2656c1.1153.3506 2.3545.0963 3.2266-.6528L25.2437 27.5869Z" fill="#32D74B"></path>
                     </svg>
                     <span class="text-white font-bold text-2xl">Bankroll Coach</span>
                     <span class="text-brand-text text-sm ml-2">Casino‑safe</span>
                 </div>
-                <button id="add-session-btn" class="bg-brand-green/20 text-brand-green w-10 h-10 rounded-full flex items-center justify-center" title="Quick Deposit">
-                    <i class="fa-solid fa-bolt text-lg"></i>
-                </button>
+                <div class="flex items-center gap-2">
+                    <button id="btn-start-timer" class="bg-brand-green/20 text-brand-green w-10 h-10 rounded-full flex items-center justify-center" title="Start Session Timer">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                    <button id="add-session-btn" class="bg-brand-blue/20 text-brand-blue w-10 h-10 rounded-full flex items-center justify-center" title="Quick Deposit">
+                        <i class="fa-solid fa-bolt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIMER PANEL -->
+        <div id="timer-panel" class="mx-5 mb-4 hidden">
+            <div class="bg-brand-gray rounded-2xl p-4 flex items-center justify-between">
+                <div>
+                    <p class="text-white font-semibold">Session Timer</p>
+                    <p id="timer-remaining" class="text-brand-text text-sm">00:00:00</p>
+                    <div class="mt-2 bg-brand-light-gray meter-bar">
+                        <div id="timer-meter" class="h-full bg-brand-green" style="width:0%"></div>
+                    </div>
+                    <p id="timer-note" class="text-brand-text text-xs mt-1">No active session</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span id="timer-dot" class="countdown-dot bg-brand-red/30"></span>
+                    <button id="btn-stop-timer" class="bg-brand-dark border border-brand-light-gray text-white rounded-lg px-3 py-2">Stop</button>
+                </div>
             </div>
         </div>
 
         <!-- TAB: PLAN -->
         <div id="tab-plan" class="tab-content px-5 pt-2">
             <h1 class="text-white text-3xl font-bold mb-1">My Plan</h1>
-            <p class="text-brand-text mb-6">Budget, targets, limits and weekly progress.</p>
+            <p class="text-brand-text mb-6">Budget, goals, limits and weekly progress.</p>
 
             <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="bg-brand-gray p-4 rounded-2xl">
+                <div class="kpi-card p-4 rounded-2xl">
                     <p class="text-brand-text text-sm mb-1">Bankroll</p>
                     <p id="kpi-bankroll" class="text-white text-2xl font-bold">$0.00</p>
-                    <p class="text-brand-text text-xs mt-1">Target reserve: <span id="kpi-target" class="text-white">$0.00</span></p>
+                    <p class="text-brand-text text-xs mt-1">Reserve: <span id="kpi-target" class="text-white">$0.00</span></p>
                 </div>
-                <div class="bg-brand-gray p-4 rounded-2xl">
+                <div class="kpi-card p-4 rounded-2xl">
                     <p class="text-brand-text text-sm mb-1">Max Session Risk</p>
                     <p id="kpi-risk" class="text-white text-2xl font-bold">0%</p>
                     <p id="risk-note" class="text-brand-text text-xs mt-1">Low</p>
@@ -76,9 +107,12 @@
             </div>
 
             <div class="bg-brand-gray p-4 rounded-2xl mb-6">
-                <p class="text-white font-semibold mb-3">Weekly Progress</p>
-                <div class="w-full h-3 bg-brand-light-gray rounded-full overflow-hidden">
-                    <div id="bar-week" class="h-full bg-brand-green" style="width: 0%"></div>
+                <div class="flex items-center justify-between mb-2">
+                    <p class="text-white font-semibold">Weekly Progress</p>
+                    <p id="week-pct" class="text-brand-text text-sm">0%</p>
+                </div>
+                <div class="w-full progress-slim bg-brand-light-gray">
+                    <div id="bar-week" class="h-full bg-brand-green" style="width:0%"></div>
                 </div>
                 <p id="week-desc" class="text-brand-text text-sm mt-2">No plan started yet</p>
             </div>
@@ -86,17 +120,23 @@
             <div class="bg-brand-gray p-4 rounded-2xl mb-6">
                 <p class="text-white font-semibold mb-3">Quick Actions</p>
                 <div class="grid grid-cols-2 gap-3">
-                    <button id="act-log-deposit" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left">
-                        <i class="fa-solid fa-circle-arrow-up text-brand-green mr-2"></i> Log Deposit
+                    <button id="act-log-deposit" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left btn">
+                        <i class="fa-solid fa-circle-arrow-up text-brand-green mr-2"></i> Deposit
                     </button>
-                    <button id="act-log-withdraw" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left">
-                        <i class="fa-solid fa-circle-arrow-down text-brand-red mr-2"></i> Log Withdrawal
+                    <button id="act-log-withdraw" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left btn">
+                        <i class="fa-solid fa-circle-arrow-down text-brand-red mr-2"></i> Withdraw
                     </button>
-                    <button id="act-mark-cooloff" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left">
-                        <i class="fa-solid fa-snowflake text-brand-blue mr-2"></i> Start Cool‑Off
+                    <button id="act-log-session" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left btn">
+                        <i class="fa-solid fa-stopwatch text-brand-blue mr-2"></i> Session
                     </button>
-                    <button id="act-add-habit" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left">
+                    <button id="act-mark-cooloff" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left btn">
+                        <i class="fa-solid fa-snowflake text-brand-blue mr-2"></i> Cool‑off
+                    </button>
+                    <button id="act-add-habit" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left btn">
                         <i class="fa-solid fa-list-check text-brand-green mr-2"></i> Add Habit
+                    </button>
+                    <button id="act-quick-budget" class="bg-brand-dark text-white border border-brand-light-gray rounded-xl py-3 px-3 text-left btn">
+                        <i class="fa-solid fa-gauge-high text-brand-warning mr-2"></i> Auto‑limits
                     </button>
                 </div>
             </div>
@@ -106,54 +146,61 @@
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-brand-text text-xs mb-1">Starting Bankroll ($)</label>
-                        <input id="inp-bankroll" type="number" step="0.01" min="0" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="500.00">
+                        <input id="inp-bankroll" type="number" step="0.01" min="0" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="500.00">
                     </div>
                     <div>
                         <label class="block text-brand-text text-xs mb-1">Target Reserve ($)</label>
-                        <input id="inp-target" type="number" step="0.01" min="0" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="300.00">
+                        <input id="inp-target" type="number" step="0.01" min="0" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="300.00">
                     </div>
                     <div>
                         <label class="block text-brand-text text-xs mb-1">Weekly Budget ($)</label>
-                        <input id="inp-weekly" type="number" step="0.01" min="0" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="120.00">
+                        <input id="inp-weekly" type="number" step="0.01" min="0" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="120.00">
                     </div>
                     <div>
                         <label class="block text-brand-text text-xs mb-1">Max Session Risk (%)</label>
-                        <input id="inp-risk" type="number" step="1" min="1" max="100" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="5">
+                        <input id="inp-risk" type="number" step="1" min="1" max="100" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="5">
                     </div>
                 </div>
                 <div class="mt-3">
                     <label class="block text-brand-text text-xs mb-2">Primary Goal</label>
-                    <select id="sel-goal" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green">
+                    <select id="sel-goal" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus">
                         <option value="save">Save more</option>
-                        <option value="stabilize">Stabilize fluctuations</option>
-                        <option value="reduce">Reduce time spent</option>
+                        <option value="stabilize">Stabilize swings</option>
+                        <option value="reduce">Reduce time</option>
                         <option value="quit">Quit completely</option>
                     </select>
                 </div>
                 <div class="mt-3">
-                    <label class="block text-brand-text text-xs mb-2">Casino Categories to Track</label>
+                    <label class="block text-brand-text text-xs mb-2">Categories</label>
                     <div id="cats" class="flex flex-wrap gap-2"></div>
                 </div>
-                <div class="mt-4">
-                    <button id="btn-save-plan" class="py-3 px-5 rounded-lg bg-brand-blue text-white font-medium w-full">Save Plan</button>
+                <div class="mt-4 grid grid-cols-2 gap-3">
+                    <button id="btn-save-plan" class="py-3 px-5 rounded-lg bg-brand-blue text-white font-medium w-full btn">Save Plan</button>
+                    <button id="btn-reset-week" class="py-3 px-5 rounded-lg bg-brand-dark text-white border border-brand-light-gray font-medium w-full btn">Reset Week</button>
                 </div>
             </div>
 
             <div class="bg-brand-gray p-4 rounded-2xl mb-6">
-                <p class="text-white font-semibold mb-3">Weekly Checklist</p>
+                <div class="flex items-center justify-between">
+                    <p class="text-white font-semibold mb-3">Weekly Checklist</p>
+                    <button id="btn-pick-3" class="text-brand-blue text-xs underline">Pick 3</button>
+                </div>
                 <div id="weekly-checklist" class="space-y-2"></div>
                 <p class="text-brand-text text-xs mt-3">Check items daily. Habits drive long‑term outcomes.</p>
             </div>
 
             <div class="bg-brand-gray p-4 rounded-2xl mb-8">
-                <p class="text-white font-semibold mb-3">Recent Activity</p>
+                <div class="flex items-center justify-between mb-3">
+                    <p class="text-white font-semibold">Recent Activity</p>
+                    <button id="btn-show-all-activity" class="text-brand-blue text-xs underline">Show all</button>
+                </div>
                 <div id="activity" class="space-y-2"></div>
                 <div id="empty-activity" class="text-brand-text text-sm">No activity yet</div>
             </div>
 
             <div class="bg-brand-dark p-4 rounded-2xl border border-brand-light-gray mb-8">
                 <p class="text-brand-text text-xs">
-                    This app does not promote gambling. It helps plan budgets and reduce risk. If gambling is causing problems, consider seeking help from responsible gambling resources below.
+                    This app does not promote gambling. It helps plan budgets and reduce risk. If gambling is causing problems, please reach out to responsible gambling resources in your country.
                 </p>
             </div>
         </div>
@@ -165,7 +212,7 @@
             <div class="bg-brand-gray p-4 rounded-2xl mb-6">
                 <h3 class="text-white font-semibold mb-3">Starter Course</h3>
                 <div id="course" class="space-y-2"></div>
-                <div class="mt-3 w-full h-3 bg-brand-light-gray rounded-full overflow-hidden">
+                <div class="mt-3 w-full progress-slim bg-brand-light-gray">
                     <div id="course-progress" class="h-full bg-brand-green" style="width:0%"></div>
                 </div>
                 <p id="course-note" class="text-brand-text text-xs mt-2">0/6 completed</p>
@@ -173,11 +220,11 @@
             <div class="bg-brand-gray p-4 rounded-2xl">
                 <h3 class="text-white font-semibold mb-3">Guidelines</h3>
                 <ul class="text-brand-text text-sm list-disc pl-5 space-y-2">
-                    <li>No casino links, ads, or promotions here.</li>
+                    <li>No casino links, ads, or promotions.</li>
                     <li>Budget first; sessions are optional and limited.</li>
                     <li>Use cool‑off instead of chasing losses.</li>
                     <li>Set daily time and loss caps. Respect them.</li>
-                    <li>Review weekly and adjust limits down when needed.</li>
+                    <li>Weekly review and lower limits when needed.</li>
                 </ul>
             </div>
         </div>
@@ -185,31 +232,32 @@
         <!-- TAB: JOURNAL -->
         <div id="tab-journal" class="tab-content hidden px-5 pt-12">
             <h1 class="text-white text-3xl font-bold mb-2">Journal</h1>
-            <p class="text-brand-text mb-6">Reflect on mood, time, and insights.</p>
+            <p class="text-brand-text mb-6">Track mood, time, and insights.</p>
 
             <div class="bg-brand-gray p-4 rounded-2xl mb-6">
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-brand-text text-xs mb-1">Mood</label>
-                        <select id="j-mood" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green">
+                        <select id="j-mood" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus">
                             <option>😊 Great</option><option>🙂 Good</option><option>😐 Neutral</option><option>🙁 Low</option><option>😫 Stressed</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-brand-text text-xs mb-1">Time Spent (min)</label>
-                        <input id="j-time" type="number" min="0" step="5" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="0">
+                        <label class="block text-brand-text text-xs mb-1">Time (min)</label>
+                        <input id="j-time" type="number" min="0" step="5" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="0">
                     </div>
                 </div>
                 <div class="mt-3">
                     <label class="block text-brand-text text-xs mb-1">What went well?</label>
-                    <textarea id="j-good" rows="3" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="Wins, discipline moments, insights"></textarea>
+                    <textarea id="j-good" rows="3" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="Discipline moments, breaks, insights"></textarea>
                 </div>
                 <div class="mt-3">
                     <label class="block text-brand-text text-xs mb-1">What needs attention?</label>
-                    <textarea id="j-bad" rows="3" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="Triggers, mistakes, things to change"></textarea>
+                    <textarea id="j-bad" rows="3" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="Triggers, mistakes, things to change"></textarea>
                 </div>
-                <div class="mt-4">
-                    <button id="btn-save-journal" class="py-3 px-5 rounded-lg bg-brand-blue text-white font-medium w-full">Save Entry</button>
+                <div class="mt-4 grid grid-cols-2 gap-3">
+                    <button id="btn-save-journal" class="py-3 px-5 rounded-lg bg-brand-blue text-white font-medium w-full btn">Save Entry</button>
+                    <button id="btn-quick-mood" class="py-3 px-5 rounded-lg bg-brand-dark text-white border border-brand-light-gray font-medium w-full btn">Quick mood</button>
                 </div>
             </div>
 
@@ -222,29 +270,30 @@
 
         <!-- TAB: SAFETY -->
         <div id="tab-safety" class="tab-content hidden px-5 pt-12">
-            <h1 class="text-white text-3xl font-bold mb-2">Safety &amp; Data</h1>
-            <p class="text-brand-text mb-6">Limits, cool‑off, export/import, and privacy.</p>
+            <h1 class="text-white text-3xl font-bold mb-2">Safety & Data</h1>
+            <p class="text-brand-text mb-6">Limits, cool‑off, export/import, privacy.</p>
 
             <div class="grid grid-cols-1 gap-4 mb-6">
                 <div class="bg-brand-gray p-4 rounded-2xl">
                     <p class="text-brand-text text-sm mb-1">Daily Time Limit (min)</p>
                     <div class="flex items-center gap-3">
-                        <input id="set-time-limit" type="number" min="0" class="flex-1 p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="60">
-                        <button id="apply-time-limit" class="py-2 px-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray">Save</button>
+                        <input id="set-time-limit" type="number" min="0" class="flex-1 p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="60">
+                        <button id="apply-time-limit" class="py-2 px-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray btn">Save</button>
                     </div>
+                    <p id="time-usage" class="text-brand-text text-xs mt-2">Today: 0 min</p>
                 </div>
                 <div class="bg-brand-gray p-4 rounded-2xl">
                     <p class="text-brand-text text-sm mb-1">Daily Loss Cap ($)</p>
                     <div class="flex items-center gap-3">
-                        <input id="set-loss-cap" type="number" min="0" step="0.01" class="flex-1 p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="50.00">
-                        <button id="apply-loss-cap" class="py-2 px-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray">Save</button>
+                        <input id="set-loss-cap" type="number" min="0" step="0.01" class="flex-1 p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="50.00">
+                        <button id="apply-loss-cap" class="py-2 px-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray btn">Save</button>
                     </div>
                 </div>
                 <div class="bg-brand-gray p-4 rounded-2xl">
                     <p class="text-brand-text text-sm mb-1">Cool‑Off (days)</p>
                     <div class="flex items-center gap-3">
-                        <input id="set-cooloff-days" type="number" min="0" class="flex-1 p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray focus:outline-none focus:border-brand-green" placeholder="3">
-                        <button id="btn-apply-cooloff" class="py-2 px-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray">Apply</button>
+                        <input id="set-cooloff-days" type="number" min="0" class="flex-1 p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="3">
+                        <button id="btn-apply-cooloff" class="py-2 px-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray btn">Apply</button>
                     </div>
                     <p id="cooloff-status" class="text-brand-text text-xs mt-2">No cool‑off scheduled</p>
                 </div>
@@ -253,21 +302,21 @@
             <div class="bg-brand-gray p-4 rounded-2xl">
                 <p class="text-white font-semibold mb-3">Data</p>
                 <div class="flex items-center gap-3 flex-wrap">
-                    <button id="btn-export" class="py-2 px-4 rounded-lg bg-brand-dark text-white border border-brand-light-gray">Export JSON</button>
-                    <button id="btn-import" class="py-2 px-4 rounded-lg bg-brand-dark text-white border border-brand-light-gray">Import JSON</button>
+                    <button id="btn-export" class="py-2 px-4 rounded-lg bg-brand-dark text-white border border-brand-light-gray btn">Export JSON</button>
+                    <button id="btn-import" class="py-2 px-4 rounded-lg bg-brand-dark text-white border border-brand-light-gray btn">Import JSON</button>
                     <input id="file-import" type="file" accept="application/json" class="hidden">
-                    <button id="btn-clear" class="py-2 px-4 rounded-lg bg-brand-red text-white">Clear All</button>
+                    <button id="btn-clear" class="py-2 px-4 rounded-lg bg-brand-red text-white btn">Clear All</button>
                 </div>
-                <p class="text-brand-text text-xs mt-3">Your data is stored locally when available. In sandboxed iframes it runs in memory; use Export/Import to persist.</p>
+                <p class="text-brand-text text-xs mt-3">Data is stored locally; in sandbox it falls back to memory. Use Export/Import.</p>
             </div>
 
             <div class="bg-brand-dark p-4 rounded-2xl border border-brand-light-gray mt-6">
                 <h3 class="text-white font-semibold mb-2">Responsible Gambling Resources</h3>
                 <ul class="text-brand-text text-sm list-disc pl-5 space-y-1">
                     <li>Set time and money limits before you start.</li>
-                    <li>Never chase losses; take a cool‑off instead.</li>
-                    <li>Keep gambling separate from paying essential bills.</li>
-                    <li>If gambling is impacting your life, consider reaching out to local support hotlines or counseling services in your country.</li>
+                    <li>Do not chase losses — use a cool‑off.</li>
+                    <li>Keep gambling separate from essential bills.</li>
+                    <li>If gambling impacts your life, contact local support services.</li>
                 </ul>
             </div>
         </div>
@@ -275,26 +324,26 @@
         <!-- TAB: REPORTS -->
         <div id="tab-reports" class="tab-content hidden px-5 pt-12">
             <h1 class="text-white text-3xl font-bold mb-2">Reports</h1>
-            <p class="text-brand-text mb-6">Weekly/monthly summaries and limit compliance.</p>
+            <p class="text-brand-text mb-6">7/30‑day summary, limit compliance, trends.</p>
 
             <div class="grid grid-cols-1 gap-4 mb-6">
                 <div class="bg-brand-gray p-4 rounded-2xl">
-                    <p class="text-white font-semibold mb-3">Summary</p>
+                    <p class="text-white font-semibold mb-3">Summary (30d)</p>
                     <div class="grid grid-cols-2 gap-3">
                         <div class="bg-brand-dark border border-brand-light-gray rounded-xl p-3">
-                            <p class="text-brand-text text-xs">Deposits (30d)</p>
+                            <p class="text-brand-text text-xs">Deposits</p>
                             <p id="rep-deposits" class="text-white text-xl font-bold">$0.00</p>
                         </div>
                         <div class="bg-brand-dark border border-brand-light-gray rounded-xl p-3">
-                            <p class="text-brand-text text-xs">Withdrawals (30d)</p>
+                            <p class="text-brand-text text-xs">Withdrawals</p>
                             <p id="rep-withdrawals" class="text-white text-xl font-bold">$0.00</p>
                         </div>
                         <div class="bg-brand-dark border border-brand-light-gray rounded-xl p-3">
-                            <p class="text-brand-text text-xs">Net (30d)</p>
+                            <p class="text-brand-text text-xs">Net</p>
                             <p id="rep-net" class="text-white text-xl font-bold">$0.00</p>
                         </div>
                         <div class="bg-brand-dark border border-brand-light-gray rounded-xl p-3">
-                            <p class="text-brand-text text-xs">Sessions Logged (30d)</p>
+                            <p class="text-brand-text text-xs">Sessions</p>
                             <p id="rep-sessions" class="text-white text-xl font-bold">0</p>
                         </div>
                     </div>
@@ -306,7 +355,21 @@
                 </div>
 
                 <div class="bg-brand-gray p-4 rounded-2xl">
-                    <p class="text-white font-semibold mb-3">Activity Log (last 30)</p>
+                    <p class="text-white font-semibold mb-3">Trends (7d)</p>
+                    <div class="bg-brand-dark border border-brand-light-gray rounded-xl p-3">
+                        <svg id="spark-net" class="sparkline w-full" viewBox="0 0 200 34" preserveAspectRatio="none" aria-hidden="true"></svg>
+                        <p id="spark-note" class="text-brand-text text-xs mt-1">No data</p>
+                    </div>
+                </div>
+
+                <div class="bg-brand-gray p-4 rounded-2xl">
+                    <p class="text-white font-semibold mb-3">Compliance Calendar (14d)</p>
+                    <div id="compliance-calendar" class="grid grid-cols-7 gap-2"></div>
+                    <p class="text-brand-text text-xs mt-2">Green: OK, Yellow: near limit, Red: exceeded.</p>
+                </div>
+
+                <div class="bg-brand-gray p-4 rounded-2xl">
+                    <p class="text-white font-semibold mb-3">Activity (last 30)</p>
                     <div id="rep-activity" class="space-y-2"></div>
                 </div>
             </div>
@@ -314,27 +377,22 @@
     </main>
 
     <!-- Bottom Navigation -->
-    <nav id="bottom-navigation" class="absolute bottom-0 left-0 right-0 h-24 bg-brand-gray/80 backdrop-blur-xl border-t border-brand-light-gray" style="border-top-left-radius: 20px; border-top-right-radius: 20px;">
+    <nav id="bottom-navigation" class="absolute bottom-0 left-0 right-0 h-24 bg-brand-gray/80 backdrop-blur-xl border-t border-brand-light-gray" style="border-top-left-radius:20px;border-top-right-radius:20px;">
         <div class="flex justify-around items-center h-full px-2 pt-2">
             <button data-tab="plan" class="nav-item flex flex-col items-center space-y-1 text-brand-green">
-                <i class="fa-solid fa-clipboard-check text-2xl"></i>
-                <span class="text-xs font-medium">Plan</span>
+                <i class="fa-solid fa-clipboard-check text-2xl"></i><span class="text-xs font-medium">Plan</span>
             </button>
             <button data-tab="learn" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
-                <i class="fa-solid fa-graduation-cap text-2xl"></i>
-                <span class="text-xs font-medium">Learn</span>
+                <i class="fa-solid fa-graduation-cap text-2xl"></i><span class="text-xs font-medium">Learn</span>
             </button>
             <button data-tab="journal" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
-                <i class="fa-solid fa-book text-2xl"></i>
-                <span class="text-xs font-medium">Journal</span>
+                <i class="fa-solid fa-book text-2xl"></i><span class="text-xs font-medium">Journal</span>
             </button>
             <button data-tab="reports" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
-                <i class="fa-solid fa-chart-simple text-2xl"></i>
-                <span class="text-xs font-medium">Reports</span>
+                <i class="fa-solid fa-chart-simple text-2xl"></i><span class="text-xs font-medium">Reports</span>
             </button>
             <button data-tab="safety" class="nav-item flex flex-col items-center space-y-1 text-brand-text">
-                <i class="fa-solid fa-shield-heart text-2xl"></i>
-                <span class="text-xs font-medium">Safety</span>
+                <i class="fa-solid fa-shield-heart text-2xl"></i><span class="text-xs font-medium">Safety</span>
             </button>
         </div>
     </nav>
@@ -343,150 +401,271 @@
     <div id="iphone-notch" class="absolute top-0 left-1/2 -translate-x-1/2 w-2/5 h-7 bg-brand-dark rounded-b-2xl"></div>
 
     <!-- Toast -->
-    <div id="toast" class="hidden fixed inset-x-0 bottom-28 z-50 flex items-center justify-center">
+    <div id="toast" class="hidden fixed inset-x-0 bottom-28 z-50 flex items-center justify-center px-4">
         <div class="bg-brand-dark border border-brand-light-gray text-white text-sm px-4 py-2 rounded-xl">Saved</div>
+    </div>
+
+    <!-- Onboarding Modal -->
+    <div id="onboarding" class="hidden fixed inset-0 bg-black/70 z-50 items-end md:items-center justify-center">
+        <div class="w-full md:max-w-md bg-brand-gray rounded-t-2xl md:rounded-2xl p-5 border border-brand-light-gray">
+            <div id="ob-step-1" class="ob-step">
+                <h3 class="text-white text-xl font-bold mb-2">Welcome 👋</h3>
+                <p class="text-brand-text text-sm mb-4">Let’s set up the basics in 30 seconds.</p>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-brand-text text-xs mb-1">Bankroll ($)</label>
+                        <input id="ob-bankroll" type="number" min="0" step="0.01" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="300">
+                    </div>
+                    <div>
+                        <label class="block text-brand-text text-xs mb-1">Weekly budget ($)</label>
+                        <input id="ob-weekly" type="number" min="0" step="0.01" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="80">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <label class="block text-brand-text text-xs mb-1">Goal</label>
+                    <select id="ob-goal" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus">
+                        <option value="save">Save more</option>
+                        <option value="stabilize">Stabilize</option>
+                        <option value="reduce">Reduce time</option>
+                        <option value="quit">Quit</option>
+                    </select>
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                    <button id="ob-skip" class="text-brand-text text-sm underline">Skip</button>
+                    <button id="ob-next" class="py-2 px-4 rounded-lg bg-brand-blue text-white btn">Next</button>
+                </div>
+            </div>
+            <div id="ob-step-2" class="ob-step hidden">
+                <h3 class="text-white text-xl font-bold mb-2">Limits</h3>
+                <p class="text-brand-text text-sm mb-4">Suggested values — you can change later.</p>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-brand-text text-xs mb-1">Session risk (%)</label>
+                        <input id="ob-risk" type="number" min="1" max="100" step="1" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="5">
+                    </div>
+                    <div>
+                        <label class="block text-brand-text text-xs mb-1">Time limit (min/day)</label>
+                        <input id="ob-time" type="number" min="0" step="5" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="60">
+                    </div>
+                    <div class="col-span-2">
+                        <label class="block text-brand-text text-xs mb-1">Loss cap ($/day)</label>
+                        <input id="ob-loss" type="number" min="0" step="0.01" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="40">
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                    <button id="ob-back" class="text-brand-text text-sm underline">Back</button>
+                    <button id="ob-finish" class="py-2 px-4 rounded-lg bg-brand-green text-black btn">Finish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Session Modal -->
+    <div id="session-modal" class="hidden fixed inset-0 bg-black/70 z-50 items-end md:items-center justify-center">
+        <div class="w-full md:max-w-md bg-brand-gray rounded-t-2xl md:rounded-2xl p-5 border border-brand-light-gray">
+            <h3 class="text-white text-xl font-bold mb-2">New Session</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-brand-text text-xs mb-1">Category</label>
+                    <select id="sess-cat" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus">
+                        <option>Slots</option><option>Live</option><option>Roulette</option><option>Blackjack</option><option>Baccarat</option><option>Poker</option><option>Craps</option><option>Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-brand-text text-xs mb-1">Duration (min)</label>
+                    <input id="sess-min" type="number" min="0" step="5" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="30">
+                </div>
+                <div>
+                    <label class="block text-brand-text text-xs mb-1">Net result ($)</label>
+                    <input id="sess-net" type="number" step="0.01" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="-10">
+                </div>
+                <div>
+                    <label class="block text-brand-text text-xs mb-1">Note</label>
+                    <input id="sess-note" type="text" class="w-full p-3 rounded-lg bg-brand-dark text-white border border-brand-light-gray ring-focus" placeholder="Short note">
+                </div>
+            </div>
+            <div class="mt-4 grid grid-cols-2 gap-3">
+                <button id="sess-cancel" class="py-2 px-4 rounded-lg bg-brand-dark text-white border border-brand-light-gray btn">Cancel</button>
+                <button id="sess-save" class="py-2 px-4 rounded-lg bg-brand-blue text-white btn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Activity Full Modal -->
+    <div id="activity-modal" class="hidden fixed inset-0 bg-black/70 z-50 items-end md:items-center justify-center">
+        <div class="w-full md:max-w-md bg-brand-gray rounded-t-2xl md:rounded-2xl p-5 border border-brand-light-gray max-h-[80vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-white text-xl font-bold">All activity</h3>
+                <button id="activity-close" class="text-brand-text"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="activity-full" class="space-y-2"></div>
+        </div>
     </div>
 </div>
 
 <script>
-    // =========================
-    // Safe Storage Abstraction
-    // =========================
-    const storeKey = 'bankroll_coach_casino_v1';
-    const memoryStore = new Map();
-    function storageAvailable() {
-      try { const t='__t__'; localStorage.setItem(t,'1'); localStorage.removeItem(t); return true; } catch(e){ return false; }
-    }
-    const HAS_LS = storageAvailable();
-    const setItemSafe = (k,v)=>{ if(HAS_LS){ try{ localStorage.setItem(k,v); }catch(e){ memoryStore.set(k,v);} } else { memoryStore.set(k,v);} };
-    const getItemSafe = (k)=>{ if(HAS_LS){ try{ return localStorage.getItem(k);}catch(e){ return memoryStore.get(k)??null;} } return memoryStore.has(k)?memoryStore.get(k):null; };
-    const removeItemSafe = (k)=>{ if(HAS_LS){ try{ localStorage.removeItem(k);}catch(e){ memoryStore.delete(k);} } else { memoryStore.delete(k);} };
+    /* ========= Storage ========= */
+    const storeKey='bankroll_coach_casino_v2_plus_en';
+    const memoryStore=new Map();
+    function storageAvailable(){try{const t='__t__';localStorage.setItem(t,'1');localStorage.removeItem(t);return true;}catch(e){return false;}}
+    const HAS_LS=storageAvailable();
+    const setItemSafe=(k,v)=>{ if(HAS_LS){ try{localStorage.setItem(k,v);}catch(e){ memoryStore.set(k,v);} } else { memoryStore.set(k,v);} };
+    const getItemSafe=(k)=>{ if(HAS_LS){ try{return localStorage.getItem(k);}catch(e){ return memoryStore.get(k)??null;} } return memoryStore.has(k)?memoryStore.get(k):null; };
+    const removeItemSafe=(k)=>{ if(HAS_LS){ try{localStorage.removeItem(k);}catch(e){ memoryStore.delete(k);} } else { memoryStore.delete(k);} };
 
-    // =============
-    // App State
-    // =============
+    /* ========= State ========= */
     const state = {
       plan: {
-        bankroll: 0,
-        target: 0,
-        weekly: 0,
-        riskPct: 5,
-        goal: 'save',
-        categories: ['Slots','Live','Roulette','Blackjack'],
-        habits: [
-          {id:'h1', title:'Stop when tired or tilted', done:false},
-          {id:'h2', title:'Log deposits and withdrawals', done:false},
-          {id:'h3', title:'Weekly review (10 min)', done:false},
-          {id:'h4', title:'No play after 10pm', done:false},
-          {id:'h5', title:'One day off per week', done:false},
-          {id:'h6', title:'15‑min walk before play', done:false},
+        bankroll:0,target:0,weekly:0,riskPct:5,goal:'save',
+        categories:['Slots','Live','Roulette','Blackjack'],
+        habits:[
+          {id:'h1',title:'Stop when tired or tilted',done:false},
+          {id:'h2',title:'Log deposits and withdrawals',done:false},
+          {id:'h3',title:'Weekly review (10 min)',done:false},
+          {id:'h4',title:'No play after 10pm',done:false},
+          {id:'h5',title:'One day off per week',done:false},
+          {id:'h6',title:'15‑min walk before play',done:false},
         ],
-        progressWeek: 0
+        progressWeek:0,
+        weekStart: null
       },
       activity: [],
       journal: [],
+      sessions: [],
       course: [
-        {id:'c1', text:'Define your monthly entertainment budget (not disposable income)', done:false},
+        {id:'c1', text:'Define your monthly entertainment budget', done:false},
         {id:'c2', text:'Set daily/weekly loss caps in the app', done:false},
         {id:'c3', text:'Pick 3 habits to enforce every session', done:false},
         {id:'c4', text:'Create a cool‑off rule for tough days', done:false},
         {id:'c5', text:'Enable time limit reminders', done:false},
         {id:'c6', text:'Review weekly and lower limits when needed', done:false},
       ],
-      safety: { timeLimit: 0, lossCap: 0, coolOffDays: 0, coolOffUntil: null }
+      safety: { timeLimit:60, lossCap:40, coolOffDays:0, coolOffUntil:null },
+      timer: { active:false, startTs:null, plannedMinutes:60 },
+      meta: { firstRun:true, lastBackupTs:null, unfinishedSession:null }
     };
 
     function save(){ setItemSafe(storeKey, JSON.stringify(state)); }
     function load(){
-      const raw = getItemSafe(storeKey);
-      if(!raw) return;
-      try {
-        const s = JSON.parse(raw);
-        Object.assign(state, s);
+      const raw=getItemSafe(storeKey); if(!raw) return;
+      try{
+        const s=JSON.parse(raw); Object.assign(state,s);
         state.plan = Object.assign({
-          bankroll:0,target:0,weekly:0,riskPct:5,goal:'save',categories:[],habits:[],progressWeek:0
+          bankroll:0,target:0,weekly:0,riskPct:5,goal:'save',categories:[],habits:[],progressWeek:0,weekStart:null
         }, state.plan);
-        state.safety = Object.assign({timeLimit:0,lossCap:0,coolOffDays:0,coolOffUntil:null}, state.safety);
+        state.safety = Object.assign({timeLimit:60,lossCap:40,coolOffDays:0,coolOffUntil:null}, state.safety);
         if(!Array.isArray(state.course)) state.course=[];
         if(!Array.isArray(state.activity)) state.activity=[];
         if(!Array.isArray(state.journal)) state.journal=[];
-      } catch(e){}
+        if(!Array.isArray(state.sessions)) state.sessions=[];
+        state.timer = Object.assign({active:false,startTs:null,plannedMinutes:60}, state.timer||{});
+        state.meta = Object.assign({firstRun:false,lastBackupTs:null,unfinishedSession:null}, state.meta||{});
+      }catch(e){}
     }
 
-    // =============
-    // Helpers
-    // =============
-    const $ = (q,el=document)=>el.querySelector(q);
-    const $$= (q,el=document)=>Array.from(el.querySelectorAll(q));
-    function toast(msg='Saved'){
-      const t = $('#toast'); t.querySelector('div').textContent = msg;
-      t.classList.remove('hidden'); clearTimeout(toast._t);
-      toast._t = setTimeout(()=>t.classList.add('hidden'), 1400);
-    }
-    const fmt = (n)=>'$'+Number(n||0).toFixed(2);
+    /* ========= Helpers ========= */
+    const $=(q,el=document)=>el.querySelector(q);
+    const $$=(q,el=document)=>Array.from(el.querySelectorAll(q));
+    const now=()=>Date.now();
+    const fmt=(n)=>'$'+Number(n||0).toFixed(2);
     const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
-    function riskLabel(p){
-      if(p<=5) return {text:'Low', color:'text-brand-text'};
-      if(p<=10) return {text:'Moderate', color:'text-brand-warning'};
-      return {text:'High', color:'text-brand-red'};
-    }
-    const now = ()=>Date.now();
+    const toHHMMSS=(sec)=>{sec=Math.max(0,Math.floor(sec));const h=String(Math.floor(sec/3600)).padStart(2,'0');const m=String(Math.floor((sec%3600)/60)).padStart(2,'0');const s=String(sec%60).padStart(2,'0');return `${h}:${m}:${s}`;};
+    function riskLabel(p){ if(p<=5) return {text:'Low',color:'text-brand-text'}; if(p<=10) return {text:'Moderate',color:'text-brand-warning'}; return {text:'High',color:'text-brand-red'}; }
+    function mondayOf(ts){ const d=new Date(ts); const day=(d.getDay()+6)%7; d.setHours(0,0,0,0); d.setDate(d.getDate()-day); return d; }
+    function sameDay(a,b){ const da=new Date(a), db=new Date(b); return da.getFullYear()==db.getFullYear() && da.getMonth()==db.getMonth() && da.getDate()==db.getDate();}
+    function sum(arr){return arr.reduce((a,b)=>a+b,0);}
 
-    // =============
-    // Tabs
-    // =============
-    const navItems = document.querySelectorAll('.nav-item');
-    const tabContents = document.querySelectorAll('.tab-content');
+    /* ========= Tabs ========= */
+    const navItems=$$('.nav-item'); const tabContents=$$('.tab-content');
     function switchTab(tab){
-      tabContents.forEach(c => c.classList.toggle('hidden', c.id !== 'tab-'+tab));
-      navItems.forEach(i => {
-        const active = i.dataset.tab === tab;
-        i.classList.toggle('text-brand-green', active);
-        i.classList.toggle('text-brand-text', !active);
-      });
+      tabContents.forEach(c=>c.classList.toggle('hidden', c.id!=='tab-'+tab));
+      navItems.forEach(i=>{ const a=i.dataset.tab===tab; i.classList.toggle('text-brand-green',a); i.classList.toggle('text-brand-text',!a); });
       if(tab==='plan') renderPlanTab();
       if(tab==='learn') renderLearnTab();
       if(tab==='journal') renderJournalTab();
       if(tab==='safety') renderSafetyTab();
       if(tab==='reports') renderReportsTab();
     }
-    navItems.forEach(item => item.addEventListener('click', ()=> switchTab(item.dataset.tab)));
+    navItems.forEach(i=>i.addEventListener('click',()=>switchTab(i.dataset.tab)));
 
-    // Bolt quick deposit
-    $('#add-session-btn').addEventListener('click', ()=>{
-      const v = prompt('Quick deposit amount ($):','20');
-      const n = Number(v);
-      if(isNaN(n) || n<=0) return;
-      state.plan.bankroll += n;
-      state.activity.push({type:'deposit', title:'Quick Deposit', amount:n, ts:now()});
-      save(); renderPlanKPI(); renderActivity(); renderReportsTab();
-      toast('Deposit saved');
+    /* ========= Toast ========= */
+    function toast(msg='Saved'){ const t=$('#toast'); t.querySelector('div').textContent=msg; t.classList.remove('hidden'); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.add('hidden'),1600); }
+
+    /* ========= Timer ========= */
+    let timerInt=null;
+    function showTimerPanel(show){ $('#timer-panel').classList.toggle('hidden',!show); }
+    function startTimer(minutes){
+      state.timer.active=true; state.timer.startTs=now(); state.timer.plannedMinutes=minutes||state.safety.timeLimit||60;
+      save(); updateTimerUI(); if(timerInt) clearInterval(timerInt);
+      timerInt=setInterval(updateTimerUI,1000); showTimerPanel(true); toast('Timer started');
+    }
+    function stopTimer(){
+      state.timer.active=false; state.timer.startTs=null; save();
+      if(timerInt) clearInterval(timerInt); updateTimerUI(); showTimerPanel(false); toast('Timer stopped');
+    }
+    function updateTimerUI(){
+      const note=$('#timer-note'), rem=$('#timer-remaining'), meter=$('#timer-meter'), dot=$('#timer-dot');
+      if(!state.timer.active){ rem.textContent='00:00:00'; meter.style.width='0%'; note.textContent='No active session'; dot.style.backgroundColor='rgba(255,69,58,.3)'; return; }
+      const elapsed=(now()-state.timer.startTs)/1000; const planSec=(state.timer.plannedMinutes*60);
+      const left=Math.max(0, planSec - elapsed);
+      rem.textContent=toHHMMSS(left);
+      const pct=clamp(100*elapsed/Math.max(1,planSec),0,100);
+      meter.style.width=pct+'%';
+      let color='#32D74B'; if(pct>66) color='#FFB020'; if(pct>90) color='#FF453A'; meter.style.backgroundColor=color; dot.style.backgroundColor=color;
+      if(left===0){ toast('Time is up — take a break'); }
+    }
+
+    /* ========= Onboarding ========= */
+    function showOnboarding(){ const ob=$('#onboarding'); ob.classList.remove('hidden'); ob.classList.add('flex'); }
+    function hideOnboarding(){ const ob=$('#onboarding'); ob.classList.add('hidden'); ob.classList.remove('flex'); }
+    $('#ob-next').addEventListener('click',()=>{ $('#ob-step-1').classList.add('hidden'); $('#ob-step-2').classList.remove('hidden'); });
+    $('#ob-back').addEventListener('click',()=>{ $('#ob-step-2').classList.add('hidden'); $('#ob-step-1').classList.remove('hidden'); });
+    $('#ob-skip').addEventListener('click',()=>{ state.meta.firstRun=false; save(); hideOnboarding(); toast('Onboarding skipped'); });
+    $('#ob-finish').addEventListener('click',()=>{
+      const b=Number($('#ob-bankroll').value||0);
+      const w=Number($('#ob-weekly').value||0);
+      const g=$('#ob-goal').value||'save';
+      const r=clamp(Number($('#ob-risk').value||5),1,100);
+      const t=Number($('#ob-time').value||60);
+      const l=Number($('#ob-loss').value||40);
+      state.plan.bankroll=b; state.plan.weekly=w; state.plan.goal=g; state.plan.riskPct=r;
+      state.safety.timeLimit=t; state.safety.lossCap=l;
+      state.plan.target = Math.max(0, Math.round(b*0.5*100)/100);
+      state.plan.weekStart = mondayOf(now()).toISOString();
+      state.meta.firstRun=false;
+      save(); hideOnboarding(); renderPlanTab(); renderSafetyTab(); toast('Setup complete');
     });
 
-    // =============
-    // PLAN tab
-    // =============
+    /* ========= PLAN ========= */
+    function ensureWeek(){
+      const ms= state.plan.weekStart ? new Date(state.plan.weekStart) : mondayOf(now());
+      const curMon = mondayOf(now());
+      if(ms.toDateString() !== curMon.toDateString()){
+        state.plan.weekStart = curMon.toISOString();
+        state.plan.progressWeek = 0;
+        state.plan.habits.forEach(h=>h.done=false);
+        state.activity.push({type:'week', title:'New week', amount:null, ts:now()});
+        save();
+      }
+    }
     function renderPlanKPI(){
-      $('#kpi-bankroll').textContent = fmt(state.plan.bankroll);
-      $('#kpi-target').textContent = fmt(state.plan.target);
-      const p = clamp(state.plan.riskPct,1,100);
-      $('#kpi-risk').textContent = p+'%';
-      const r = riskLabel(p);
-      const rn = $('#risk-note'); rn.textContent = r.text; rn.className = 'text-xs mt-1 ' + r.color;
-      const prog = clamp(state.plan.progressWeek, 0, 100);
-      $('#bar-week').style.width = prog + '%';
+      $('#kpi-bankroll').textContent=fmt(state.plan.bankroll);
+      $('#kpi-target').textContent=fmt(state.plan.target);
+      const p=clamp(state.plan.riskPct,1,100); $('#kpi-risk').textContent=p+'%';
+      const R=riskLabel(p); const rn=$('#risk-note'); rn.textContent=R.text; rn.className='text-xs mt-1 '+R.color;
+      const prog=clamp(state.plan.progressWeek,0,100); $('#bar-week').style.width=prog+'%'; $('#week-pct').textContent=prog+'%';
       $('#week-desc').textContent = prog>0 ? `Week progress: ${prog}%` : 'No plan started yet';
     }
     function renderCategories(){
-      const cont = $('#cats'); cont.innerHTML='';
-      const all = ['Slots','Live','Roulette','Blackjack','Baccarat','Poker','Craps','Other'];
+      const cont=$('#cats'); cont.innerHTML='';
+      const all=['Slots','Live','Roulette','Blackjack','Baccarat','Poker','Craps','Other'];
       all.forEach(name=>{
-        const on = state.plan.categories.includes(name);
-        const btn = document.createElement('button');
-        btn.className = `px-3 py-2 rounded-full border text-xs ${on?'border-brand-green text-white bg-brand-green/10':'border-brand-light-gray text-brand-text bg-brand-dark'}`;
-        btn.textContent = name;
-        btn.addEventListener('click', ()=>{
-          const i = state.plan.categories.indexOf(name);
+        const on=state.plan.categories.includes(name);
+        const btn=document.createElement('button');
+        btn.className=`chip px-3 py-2 rounded-full border text-xs ${on?'border-brand-green text-white bg-brand-green/10':'border-brand-light-gray text-brand-text bg-brand-dark'}`;
+        btn.textContent=name;
+        btn.addEventListener('click',()=>{
+          const i=state.plan.categories.indexOf(name);
           if(i>=0) state.plan.categories.splice(i,1); else state.plan.categories.push(name);
           save(); renderCategories();
         });
@@ -494,39 +673,48 @@
       });
     }
     function renderHabits(){
-      const list = $('#weekly-checklist'); list.innerHTML='';
+      const list=$('#weekly-checklist'); list.innerHTML='';
       state.plan.habits.forEach(h=>{
-        const row = document.createElement('div');
-        row.className = 'flex items-start space-x-3 bg-brand-dark border border-brand-light-gray rounded-xl p-3';
-        row.innerHTML = `
+        const row=document.createElement('div');
+        row.className='flex items-start space-x-3 bg-brand-dark border border-brand-light-gray rounded-xl p-3';
+        row.innerHTML=`
           <button class="w-6 h-6 rounded-md flex items-center justify-center ${h.done?'bg-brand-green text-black':'bg-brand-dark border border-brand-light-gray text-brand-text'}" aria-label="toggle habit">
             ${h.done?'<i class="fa-solid fa-check text-xs"></i>':''}
           </button>
-          <div>
+          <div class="flex-1">
             <p class="text-white text-sm font-medium">${h.title}</p>
             <p class="text-brand-text text-xs">Daily</p>
           </div>
+          <button class="text-brand-text text-xs underline" data-del>delete</button>
         `;
-        row.querySelector('button').addEventListener('click', ()=>{
-          h.done = !h.done;
-          state.plan.progressWeek = Math.round(100 * state.plan.habits.filter(x=>x.done).length / Math.max(1, state.plan.habits.length));
+        row.querySelector('button').addEventListener('click',()=>{
+          h.done=!h.done;
+          state.plan.progressWeek=Math.round(100*state.plan.habits.filter(x=>x.done).length/Math.max(1,state.plan.habits.length));
+          save(); renderHabits(); renderPlanKPI();
+        });
+        row.querySelector('[data-del]').addEventListener('click',()=>{
+          state.plan.habits=state.plan.habits.filter(x=>x.id!==h.id);
           save(); renderHabits(); renderPlanKPI();
         });
         list.appendChild(row);
       });
     }
-    function renderActivity(){
-      const list = $('#activity'); const empty = $('#empty-activity');
-      list.innerHTML='';
-      if(!state.activity.length){ empty.classList.remove('hidden'); return; }
-      empty.classList.add('hidden');
-      state.activity.slice().reverse().slice(0,12).forEach(a=>{
-        const item = document.createElement('div');
-        item.className = 'bg-brand-dark border border-brand-light-gray rounded-xl p-3 flex items-center justify-between';
-        item.innerHTML = `
+    function renderActivity(limit=12, target='#activity'){
+      const list=$(target); const empty = target==='#activity' ? $('#empty-activity') : null;
+      list.innerHTML=''; if(empty) empty.classList.toggle('hidden', !!state.activity.length);
+      state.activity.slice().reverse().slice(0,limit).forEach(a=>{
+        const item=document.createElement('div');
+        item.className='bg-brand-dark border border-brand-light-gray rounded-xl p-3 flex items-center justify-between';
+        const icon = a.type==='deposit'?'fa-circle-arrow-up text-brand-green'
+                   : a.type==='withdraw'?'fa-circle-arrow-down text-brand-red'
+                   : a.type==='cooloff'?'fa-snowflake text-brand-blue'
+                   : a.type==='session'?'fa-stopwatch text-brand-blue'
+                   : a.type==='week'?'fa-calendar-week text-brand-purple'
+                   : 'fa-note-sticky text-brand-purple';
+        item.innerHTML=`
           <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-lg bg-brand-light-gray/40 flex items-center justify-center">
-              <i class="fa-solid ${a.type==='deposit'?'fa-circle-arrow-up text-brand-green':(a.type==='withdraw'?'fa-circle-arrow-down text-brand-red':(a.type==='cooloff'?'fa-snowflake text-brand-blue':'fa-note-sticky text-brand-purple'))}"></i>
+              <i class="fa-solid ${icon}"></i>
             </div>
             <div>
               <p class="text-white text-sm font-semibold">${a.title}</p>
@@ -534,7 +722,7 @@
             </div>
           </div>
           <div class="text-right">
-            ${typeof a.amount === 'number'
+            ${typeof a.amount==='number'
               ? `<p class="${a.amount>=0?'text-brand-green':'text-brand-red'} font-bold text-sm">${a.amount>=0?'+':''}${fmt(a.amount)}</p>`
               : '<p class="text-brand-text text-sm">—</p>'}
           </div>
@@ -550,98 +738,139 @@
       $('#sel-goal').value = state.plan.goal || 'save';
     }
     function renderPlanTab(){
+      ensureWeek();
       bindPlanInputs();
       renderPlanKPI();
       renderCategories();
       renderHabits();
-      renderActivity();
+      renderActivity(12,'#activity');
     }
-    $('#btn-save-plan').addEventListener('click', ()=>{
-      const b = Number($('#inp-bankroll').value||0);
-      const t = Number($('#inp-target').value||0);
-      const w = Number($('#inp-weekly').value||0);
-      const r = clamp(Number($('#inp-risk').value||5), 1, 100);
-      const g = $('#sel-goal').value;
+
+    /* Actions */
+    $('#btn-save-plan').addEventListener('click',()=>{
+      const b=Number($('#inp-bankroll').value||0);
+      const t=Number($('#inp-target').value||0);
+      const w=Number($('#inp-weekly').value||0);
+      const r=clamp(Number($('#inp-risk').value||5),1,100);
+      const g=$('#sel-goal').value;
       state.plan.bankroll=b; state.plan.target=t; state.plan.weekly=w; state.plan.riskPct=r; state.plan.goal=g;
+      if(!state.plan.weekStart) state.plan.weekStart = mondayOf(now()).toISOString();
       state.activity.push({type:'plan', title:'Plan updated', amount:null, ts:now()});
       save(); renderPlanTab(); renderReportsTab(); toast('Plan saved');
     });
-    // Quick actions
-    $('#act-log-deposit').addEventListener('click', ()=>{
-      const v = prompt('Deposit amount ($):','50');
-      const n = Number(v); if(isNaN(n)||n<=0) return;
+    $('#btn-reset-week').addEventListener('click',()=>{
+      if(!confirm('Reset weekly progress and habit checks?')) return;
+      state.plan.progressWeek=0; state.plan.habits.forEach(h=>h.done=false);
+      state.plan.weekStart = mondayOf(now()).toISOString();
+      save(); renderPlanTab(); toast('Week reset');
+    });
+    $('#act-log-deposit').addEventListener('click',()=>{
+      const v = prompt('Deposit amount ($):','50'); const n=Number(v); if(isNaN(n)||n<=0) return;
       state.plan.bankroll += n;
       state.activity.push({type:'deposit', title:'Deposit', amount:n, ts:now()});
       save(); renderPlanTab(); renderReportsTab(); toast('Deposit saved');
     });
-    $('#act-log-withdraw').addEventListener('click', ()=>{
-      const v = prompt('Withdrawal amount ($):','20');
-      const n = Number(v); if(isNaN(n)||n<=0) return;
+    $('#act-log-withdraw').addEventListener('click',()=>{
+      const v = prompt('Withdrawal amount ($):','20'); const n=Number(v); if(isNaN(n)||n<=0) return;
       state.plan.bankroll = Math.max(0, state.plan.bankroll - n);
       state.activity.push({type:'withdraw', title:'Withdrawal', amount:-n, ts:now()});
       save(); renderPlanTab(); renderReportsTab(); toast('Withdrawal saved');
     });
-    $('#act-mark-cooloff').addEventListener('click', ()=>{
-      const d = Number(prompt('Cool‑off days (0..30):','3'));
-      if(isNaN(d)||d<0) return;
-      state.safety.coolOffDays = d;
-      state.safety.coolOffUntil = d ? new Date(now()+d*24*3600*1000).toISOString() : null;
+    $('#act-mark-cooloff').addEventListener('click',()=>{
+      const d=Number(prompt('Cool‑off days (0..30):','3')); if(isNaN(d)||d<0) return;
+      state.safety.coolOffDays=d; state.safety.coolOffUntil = d ? new Date(now()+d*86400000).toISOString() : null;
       state.activity.push({type:'cooloff', title:`Cool‑off ${d} day(s)`, amount:null, ts:now()});
       save(); renderPlanTab(); renderSafetyTab(); toast('Cool‑off scheduled');
     });
-    $('#act-add-habit').addEventListener('click', ()=>{
-      const name = prompt('New habit:','Drink water before session');
-      if(!name) return;
+    $('#act-add-habit').addEventListener('click',()=>{
+      const name=prompt('New habit:','Drink water before session'); if(!name) return;
       state.plan.habits.push({id:'h'+Math.random().toString(36).slice(2,7), title:name, done:false});
       save(); renderPlanTab(); toast('Habit added');
     });
+    $('#act-quick-budget').addEventListener('click',()=>{
+      state.plan.target = Math.round((state.plan.bankroll*0.5)*100)/100;
+      state.plan.riskPct = 5;
+      state.safety.timeLimit = state.safety.timeLimit || 60;
+      if(state.plan.weekly>0) state.safety.lossCap = Math.round((state.plan.weekly/3)*100)/100;
+      save(); renderPlanTab(); renderSafetyTab(); toast('Auto‑limits applied');
+    });
+    $('#btn-pick-3').addEventListener('click',()=>{
+      alert('Pick 3 key habits and check them daily.');
+    });
 
-    // =============
-    // LEARN tab
-    // =============
+    /* Header quicks */
+    $('#add-session-btn').addEventListener('click',()=>{
+      const v=prompt('Quick deposit ($):','20'); const n=Number(v); if(isNaN(n)||n<=0) return;
+      state.plan.bankroll+=n; state.activity.push({type:'deposit', title:'Quick deposit', amount:n, ts:now()});
+      save(); renderPlanTab(); renderReportsTab(); toast('Saved');
+    });
+
+    /* Session modal */
+    const sessModal=$('#session-modal');
+    function openSessionModal(){ sessModal.classList.remove('hidden'); sessModal.classList.add('flex'); $('#sess-cat').value='Slots'; $('#sess-min').value='30'; $('#sess-net').value='0'; $('#sess-note').value=''; }
+    function closeSessionModal(){ sessModal.classList.add('hidden'); sessModal.classList.remove('flex'); }
+    $('#act-log-session').addEventListener('click', openSessionModal);
+    $('#sess-cancel').addEventListener('click', closeSessionModal);
+    $('#sess-save').addEventListener('click',()=>{
+      const cat=$('#sess-cat').value; const min=Number($('#sess-min').value||0); const net=Number($('#sess-net').value||0); const note=$('#sess-note').value.trim();
+      if(isNaN(min)||min<0){ toast('Invalid duration'); return; }
+      if(isNaN(net)){ toast('Invalid result'); return; }
+      state.plan.bankroll = Math.max(0, state.plan.bankroll + net);
+      const s={id:'s'+Math.random().toString(36).slice(2,9), cat, min, net, note, ts:now()};
+      state.sessions.push(s);
+      state.activity.push({type:'session', title:`Session • ${cat} • ${min} min`, amount:net, ts:s.ts});
+      checkDayComplianceHint(s.ts);
+      save(); closeSessionModal(); renderPlanTab(); renderReportsTab(); toast('Session saved');
+    });
+
+    /* Timer buttons */
+    $('#btn-start-timer').addEventListener('click',()=>{
+      const v=prompt('Minutes for timer (blank = daily limit):', String(state.safety.timeLimit||60));
+      const m = v===''||v===null ? (state.safety.timeLimit||60) : Number(v);
+      if(isNaN(m)||m<=0){ toast('Invalid value'); return; }
+      startTimer(m);
+    });
+    $('#btn-stop-timer').addEventListener('click', stopTimer);
+
+    /* Activity Full */
+    const actModal=$('#activity-modal');
+    $('#btn-show-all-activity').addEventListener('click',()=>{
+      actModal.classList.remove('hidden'); actModal.classList.add('flex');
+      const full=$('#activity-full'); full.innerHTML=''; renderActivity(1000,'#activity-full');
+    });
+    $('#activity-close').addEventListener('click',()=>{ actModal.classList.add('hidden'); actModal.classList.remove('flex'); });
+
+    /* ========= LEARN ========= */
     function renderLearnTab(){
-      const container = $('#course'); container.innerHTML='';
+      const c=$('#course'); c.innerHTML='';
       state.course.forEach(step=>{
-        const row = document.createElement('div');
-        row.className = 'flex items-start space-x-3 bg-brand-dark border border-brand-light-gray rounded-xl p-3';
-        row.innerHTML = `
+        const row=document.createElement('div');
+        row.className='flex items-start space-x-3 bg-brand-dark border border-brand-light-gray rounded-xl p-3';
+        row.innerHTML=`
           <button class="w-6 h-6 rounded-md flex items-center justify-center ${step.done?'bg-brand-green text-black':'bg-brand-dark border border-brand-light-gray text-brand-text'}" aria-label="toggle course step">
             ${step.done?'<i class="fa-solid fa-check text-xs"></i>':''}
           </button>
           <div class="text-white text-sm">${step.text}</div>
         `;
-        row.querySelector('button').addEventListener('click', ()=>{
-          step.done = !step.done; save(); updateCourseProgress(); renderLearnTab();
-        });
-        container.appendChild(row);
+        row.querySelector('button').addEventListener('click',()=>{ step.done=!step.done; save(); updateCourseProgress(); renderLearnTab(); });
+        c.appendChild(row);
       });
       updateCourseProgress();
     }
     function updateCourseProgress(){
-      const total = state.course.length;
-      const done = state.course.filter(s=>s.done).length;
-      const pct = Math.round(100*done/Math.max(1,total));
-      $('#course-progress').style.width = pct+'%';
-      $('#course-note').textContent = `${done}/${total} completed`;
-      save();
+      const total=state.course.length; const done=state.course.filter(s=>s.done).length; const pct=Math.round(100*done/Math.max(1,total));
+      $('#course-progress').style.width=pct+'%'; $('#course-note').textContent=`${done}/${total} completed`; save();
     }
 
-    // =============
-    // JOURNAL tab
-    // =============
+    /* ========= JOURNAL ========= */
     function renderJournalTab(){
-      $('#j-good').value = '';
-      $('#j-bad').value = '';
-      $('#j-time').value = '';
-      $('#j-mood').value = '😐 Neutral';
-      const list = $('#journal-entries'); const empty = $('#empty-journal');
-      list.innerHTML='';
-      if(!state.journal.length){ empty.classList.remove('hidden'); return; }
-      empty.classList.add('hidden');
+      $('#j-good').value=''; $('#j-bad').value=''; $('#j-time').value=''; $('#j-mood').value='😐 Neutral';
+      const list=$('#journal-entries'); const empty=$('#empty-journal'); list.innerHTML='';
+      if(!state.journal.length){ empty.classList.remove('hidden'); return; } empty.classList.add('hidden');
       state.journal.slice().reverse().forEach(j=>{
-        const row = document.createElement('div');
-        row.className = 'bg-brand-dark border border-brand-light-gray rounded-xl p-3 flex items-center justify-between';
-        row.innerHTML = `
+        const row=document.createElement('div');
+        row.className='bg-brand-dark border border-brand-light-gray rounded-xl p-3 flex items-center justify-between';
+        row.innerHTML=`
           <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-lg bg-brand-light-gray/40 flex items-center justify-center">
               <i class="fa-solid fa-book text-brand-green"></i>
@@ -658,166 +887,190 @@
         list.appendChild(row);
       });
     }
-    $('#btn-save-journal').addEventListener('click', ()=>{
-      const good = $('#j-good').value.trim();
-      const bad = $('#j-bad').value.trim();
-      const mood = $('#j-mood').value;
-      const time = Number($('#j-time').value||0);
-      if(!good && !bad) return toast('Write something first');
+    $('#btn-save-journal').addEventListener('click',()=>{
+      const good=$('#j-good').value.trim(); const bad=$('#j-bad').value.trim(); const mood=$('#j-mood').value; const time=Number($('#j-time').value||0);
+      if(!good&&!bad){ toast('Write something first'); return; }
       state.journal.push({good,bad,mood,time,ts:now()});
-      save(); renderJournalTab(); toast('Entry saved');
+      save(); renderJournalTab(); renderSafetyTab(); renderReportsTab(); toast('Entry saved');
+    });
+    $('#btn-quick-mood').addEventListener('click',()=>{
+      const mood=$('#j-mood').value; state.journal.push({good:'',bad:'',mood,time:0,ts:now()}); save(); renderJournalTab(); toast('Quick mood added');
     });
 
-    // =============
-    // SAFETY tab
-    // =============
+    /* ========= SAFETY ========= */
     function renderSafetyTab(){
-      $('#set-time-limit').value = state.safety.timeLimit || '';
-      $('#set-loss-cap').value = state.safety.lossCap || '';
-      $('#set-cooloff-days').value = state.safety.coolOffDays || '';
-      const status = state.safety.coolOffUntil
-        ? `Cool‑off until ${new Date(state.safety.coolOffUntil).toLocaleString()}`
-        : 'No cool‑off scheduled';
-      $('#cooloff-status').textContent = status;
+      $('#set-time-limit').value=state.safety.timeLimit||'';
+      $('#set-loss-cap').value=state.safety.lossCap||'';
+      $('#set-cooloff-days').value=state.safety.coolOffDays||'';
+      const status = state.safety.coolOffUntil ? `Cool‑off until ${new Date(state.safety.coolOffUntil).toLocaleString()}` : 'No cool‑off scheduled';
+      $('#cooloff-status').textContent=status;
+      const todayMins=sum(state.journal.filter(j=>sameDay(j.ts, now())).map(j=>Number(j.time||0)));
+      $('#time-usage').textContent=`Today: ${todayMins} min`;
     }
-    $('#apply-time-limit').addEventListener('click', ()=>{
-      const v = Number($('#set-time-limit').value||0);
-      state.safety.timeLimit = v>0?v:0; save(); toast('Time limit saved');
+    $('#apply-time-limit').addEventListener('click',()=>{
+      const v=Number($('#set-time-limit').value||0); state.safety.timeLimit=v>0?v:0; save(); toast('Time limit saved');
     });
-    $('#apply-loss-cap').addEventListener('click', ()=>{
-      const v = Number($('#set-loss-cap').value||0);
-      state.safety.lossCap = v>0?v:0; save(); toast('Loss cap saved');
+    $('#apply-loss-cap').addEventListener('click',()=>{
+      const v=Number($('#set-loss-cap').value||0); state.safety.lossCap=v>0?v:0; save(); toast('Loss cap saved');
     });
-    $('#btn-apply-cooloff').addEventListener('click', ()=>{
-      const d = Number($('#set-cooloff-days').value||0);
-      if(isNaN(d)||d<0) return toast('Enter valid days');
-      state.safety.coolOffDays = d;
-      state.safety.coolOffUntil = d ? new Date(now()+d*24*3600*1000).toISOString() : null;
+    $('#btn-apply-cooloff').addEventListener('click',()=>{
+      const d=Number($('#set-cooloff-days').value||0); if(isNaN(d)||d<0){ toast('Enter valid days'); return; }
+      state.safety.coolOffDays=d; state.safety.coolOffUntil = d ? new Date(now()+d*86400000).toISOString() : null;
       save(); renderSafetyTab(); toast('Cool‑off updated');
     });
 
-    // Export / Import / Clear
-    $('#btn-export').addEventListener('click', ()=>{
-      const blob = new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href=url; a.download='bankrollcoach_backup.json'; a.click();
-      URL.revokeObjectURL(url);
-      toast('Exported');
+    /* Export / Import / Clear */
+    $('#btn-export').addEventListener('click',()=>{
+      const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+      const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='bankrollcoach_backup.json'; a.click(); URL.revokeObjectURL(url); toast('Exported');
     });
-    $('#btn-import').addEventListener('click', ()=> $('#file-import').click());
+    $('#btn-import').addEventListener('click',()=>$('#file-import').click());
     $('#file-import').addEventListener('change', async (e)=>{
-      const file = e.target.files?.[0];
-      if(!file) return;
+      const file=e.target.files?.[0]; if(!file) return;
       try{
-        const text = await file.text();
-        const obj = JSON.parse(text);
-        if(typeof obj === 'object'){
-          Object.assign(state, obj);
-          state.plan = Object.assign({
-            bankroll:0,target:0,weekly:0,riskPct:5,goal:'save',categories:[],habits:[],progressWeek:0
-          }, state.plan||{});
-          state.safety = Object.assign({timeLimit:0,lossCap:0,coolOffDays:0,coolOffUntil:null}, state.safety||{});
-          if(!Array.isArray(state.course)) state.course=[];
-          if(!Array.isArray(state.activity)) state.activity=[];
-          if(!Array.isArray(state.journal)) state.journal=[];
-          save();
-          renderPlanTab(); renderLearnTab(); renderJournalTab(); renderSafetyTab(); renderReportsTab();
-          toast('Imported');
-        } else {
-          toast('Invalid file');
-        }
-      } catch(err){
-        console.error(err); toast('Import failed');
-      } finally {
-        e.target.value = '';
-      }
+        const text=await file.text(); const obj=JSON.parse(text);
+        if(typeof obj==='object'){
+          Object.assign(state,obj);
+          state.plan=Object.assign({bankroll:0,target:0,weekly:0,riskPct:5,goal:'save',categories:[],habits:[],progressWeek:0,weekStart:null}, state.plan||{});
+          state.safety=Object.assign({timeLimit:60,lossCap:40,coolOffDays:0,coolOffUntil:null}, state.safety||{});
+          if(!Array.isArray(state.course)) state.course=[]; if(!Array.isArray(state.activity)) state.activity=[];
+          if(!Array.isArray(state.journal)) state.journal=[]; if(!Array.isArray(state.sessions)) state.sessions=[];
+          save(); renderPlanTab(); renderLearnTab(); renderJournalTab(); renderSafetyTab(); renderReportsTab(); toast('Imported');
+        } else { toast('Invalid file'); }
+      }catch(err){ console.error(err); toast('Import failed'); } finally { e.target.value=''; }
     });
-    $('#btn-clear').addEventListener('click', ()=>{
+    $('#btn-clear').addEventListener('click',()=>{
       if(!confirm('This will clear all local data. Continue?')) return;
-      removeItemSafe(storeKey);
-      memoryStore.clear?.();
-      location.reload();
+      removeItemSafe(storeKey); memoryStore.clear?.(); location.reload();
     });
 
-    // =============
-    // REPORTS tab
-    // =============
+    /* ========= REPORTS ========= */
     function summarizePeriod(days=30){
-      const cutoff = now() - days*24*3600*1000;
-      const recent = state.activity.filter(a=>a.ts>=cutoff);
-      let dep=0, wit=0, sessions=0;
+      const cut=now()-days*86400000;
+      const recent=state.activity.filter(a=>a.ts>=cut);
+      let dep=0,wit=0,sessions=0;
       recent.forEach(a=>{
-        if(a.type==='deposit') dep += a.amount||0;
-        if(a.type==='withdraw') wit += Math.abs(a.amount||0);
-        if(a.type==='session') sessions += 1;
+        if(a.type==='deposit') dep+=a.amount||0;
+        if(a.type==='withdraw') wit+=Math.abs(a.amount||0);
+        if(a.type==='session') sessions+=1;
       });
-      return {dep, wit, net: dep - wit, sessions, recent};
+      return {dep,wit,net:dep-wit,sessions,recent};
     }
     function renderCompliance(){
-      const ul = $('#rep-compliance'); ul.innerHTML='';
-      const items = [];
-      // Loss cap check (approx: sum of net negative days)
-      const cap = Number(state.safety.lossCap||0);
+      const ul=$('#rep-compliance'); ul.innerHTML='';
+      const items=[];
+      const cap=Number(state.safety.lossCap||0);
       if(cap>0){
-        const byDay = {};
+        const byDay={};
         state.activity.forEach(a=>{
-          const d = new Date(a.ts).toDateString();
-          byDay[d] ??= 0;
-          if(a.type==='deposit') byDay[d] += a.amount||0;
-          if(a.type==='withdraw') byDay[d] -= Math.abs(a.amount||0);
+          const d=new Date(a.ts).toDateString(); byDay[d]??=0;
+          if(a.type==='deposit') byDay[d]+=a.amount||0;
+          if(a.type==='withdraw') byDay[d]-=Math.abs(a.amount||0);
+          if(a.type==='session') byDay[d]+=a.amount||0;
         });
-        const breaches = Object.values(byDay).filter(x=>x < -cap).length;
-        items.push(breaches===0
-          ? `Loss cap OK: no daily breaches detected.`
-          : `Loss cap breaches: ${breaches} day(s) exceeded the cap.`);
-      } else {
-        items.push('Loss cap not set.');
-      }
-      // Time limit check using journal "time spent"
-      const tlim = Number(state.safety.timeLimit||0);
+        const values=Object.values(byDay);
+        const breaches=values.filter(x=>x < -cap).length;
+        const near=values.filter(x=>x < -cap*0.8 && x >= -cap).length;
+        items.push(breaches===0 ? 'Loss cap: no breaches detected.' : `Loss cap: ${breaches} breach(es).`);
+        if(near>0) items.push(`Warnings near loss cap (80%): ${near}`);
+      } else items.push('Loss cap not set.');
+      const tlim=Number(state.safety.timeLimit||0);
       if(tlim>0){
-        const byDay = {};
-        state.journal.forEach(j=>{
-          const d = new Date(j.ts).toDateString();
-          byDay[d] ??= 0;
-          byDay[d] += Number(j.time||0);
-        });
-        const breaches = Object.values(byDay).filter(x=>x > tlim).length;
-        items.push(breaches===0
-          ? `Time limit OK: no daily breaches detected.`
-          : `Time limit breaches: ${breaches} day(s) exceeded the limit.`);
-      } else {
-        items.push('Time limit not set.');
-      }
-      // Cool-off status
+        const byDay={};
+        state.journal.forEach(j=>{ const d=new Date(j.ts).toDateString(); byDay[d]??=0; byDay[d]+=Number(j.time||0); });
+        const breaches=Object.values(byDay).filter(x=>x>tlim).length;
+        items.push(breaches===0 ? 'Time limit: no breaches detected.' : `Time limit: ${breaches} breach(es).`);
+      } else items.push('Time limit not set.');
       if(state.safety.coolOffUntil){
-        const until = new Date(state.safety.coolOffUntil);
-        const active = until.getTime() > now();
-        items.push(active ? `Cool‑off active until ${until.toLocaleString()}.` : `Cool‑off expired.`);
-      } else {
-        items.push('No cool‑off scheduled.');
+        const until=new Date(state.safety.coolOffUntil); const active=until.getTime()>now();
+        items.push(active?`Cool‑off active until ${until.toLocaleString()}.`:'Cool‑off expired.');
+      } else items.push('No cool‑off scheduled.');
+      items.forEach(t=>{ const li=document.createElement('li'); li.textContent=t; ul.appendChild(li); });
+    }
+    function renderSparkline(){
+      const svg=$('#spark-net'); svg.innerHTML='';
+      const days=7; const vals=[];
+      for(let i=days-1;i>=0;i--){
+        const d=new Date(now()-i*86400000); d.setHours(0,0,0,0);
+        let v=0;
+        state.activity.forEach(a=>{
+          const ad=new Date(a.ts); ad.setHours(0,0,0,0);
+          if(ad.getTime()===d.getTime()){
+            if(a.type==='deposit') v+=a.amount||0;
+            if(a.type==='withdraw') v-=Math.abs(a.amount||0);
+            if(a.type==='session') v+=a.amount||0;
+          }
+        });
+        vals.push(v);
       }
-      items.forEach(t=>{
-        const li = document.createElement('li'); li.textContent = t; ul.appendChild(li);
+      const w=200,h=34, pad=3;
+      const min=Math.min(0, ...vals), max=Math.max(0, ...vals);
+      const span=Math.max(1, max-min);
+      const points=vals.map((v,i)=>{
+        const x= pad + (i*(w-2*pad)/(vals.length-1||1));
+        const y= h - pad - ((v-min)*(h-2*pad)/span);
+        return [x,y];
       });
+      const pathD = points.map((p,i)=> (i===0?`M ${p[0]},${p[1]}`:` L ${p[0]},${p[1]}`)).join('');
+      const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', pathD);
+      path.setAttribute('stroke', '#32D74B');
+      svg.appendChild(path);
+      $('#spark-note').textContent='Daily net (deposits - withdrawals + session results)';
+    }
+    function renderComplianceCalendar(){
+      const grid=$('#compliance-calendar'); grid.innerHTML='';
+      const days=14;
+      for(let i=days-1;i>=0;i--){
+        const d=new Date(now()-i*86400000); d.setHours(0,0,0,0);
+        let net=0; let time=0;
+        state.activity.forEach(a=>{
+          const ad=new Date(a.ts); ad.setHours(0,0,0,0);
+          if(ad.getTime()===d.getTime()){
+            if(a.type==='deposit') net+=a.amount||0;
+            if(a.type==='withdraw') net-=Math.abs(a.amount||0);
+            if(a.type==='session') net+=a.amount||0;
+          }
+        });
+        state.journal.forEach(j=>{
+          const jd=new Date(j.ts); jd.setHours(0,0,0,0);
+          if(jd.getTime()===d.getTime()) time+=Number(j.time||0);
+        });
+        const cap=Number(state.safety.lossCap||0);
+        const tlim=Number(state.safety.timeLimit||0);
+        let color='bg-brand-green/40';
+        if((cap>0 && net < -cap) || (tlim>0 && time>tlim)) color='bg-brand-red/60';
+        else if((cap>0 && net < -cap*0.8) || (tlim>0 && time>tlim*0.8)) color='bg-brand-warning/60';
+        const cell=document.createElement('div');
+        cell.className='flex flex-col items-center';
+        cell.innerHTML=`
+          <div class="w-6 h-6 rounded-md ${color}"></div>
+          <div class="text-brand-text text-[10px] mt-1">${d.getDate()}</div>
+        `;
+        grid.appendChild(cell);
+      }
     }
     function renderReportsTab(){
-      const {dep, wit, net, sessions, recent} = summarizePeriod(30);
-      $('#rep-deposits').textContent = fmt(dep);
-      $('#rep-withdrawals').textContent = fmt(wit);
-      const netEl = $('#rep-net'); netEl.textContent = fmt(net);
-      netEl.className = 'text-white text-xl font-bold ' + (net>=0?'text-brand-green':'text-brand-red');
-      $('#rep-sessions').textContent = String(sessions);
-
-      // Activity feed
-      const list = $('#rep-activity'); list.innerHTML='';
+      const {dep,wit,net,sessions,recent}=summarizePeriod(30);
+      $('#rep-deposits').textContent=fmt(dep);
+      $('#rep-withdrawals').textContent=fmt(wit);
+      const netEl=$('#rep-net'); netEl.textContent=fmt(net);
+      netEl.className='text-white text-xl font-bold '+(net>=0?'text-brand-green':'text-brand-red');
+      $('#rep-sessions').textContent=String(sessions);
+      const list=$('#rep-activity'); list.innerHTML='';
       recent.slice().reverse().slice(0,30).forEach(a=>{
-        const row = document.createElement('div');
-        row.className = 'bg-brand-dark border border-brand-light-gray rounded-xl p-3 flex items-center justify-between';
-        row.innerHTML = `
+        const row=document.createElement('div');
+        row.className='bg-brand-dark border border-brand-light-gray rounded-xl p-3 flex items-center justify-between';
+        const icon = a.type==='deposit'?'fa-circle-arrow-up text-brand-green'
+                   : a.type==='withdraw'?'fa-circle-arrow-down text-brand-red'
+                   : a.type==='cooloff'?'fa-snowflake text-brand-blue'
+                   : a.type==='session'?'fa-stopwatch text-brand-blue'
+                   : a.type==='week'?'fa-calendar-week text-brand-purple'
+                   : 'fa-note-sticky text-brand-purple';
+        row.innerHTML=`
           <div class="flex items-center space-x-3">
             <div class="w-9 h-9 rounded-lg bg-brand-light-gray/40 flex items-center justify-center">
-              <i class="fa-solid ${a.type==='deposit'?'fa-circle-arrow-up text-brand-green':(a.type==='withdraw'?'fa-circle-arrow-down text-brand-red':(a.type==='cooloff'?'fa-snowflake text-brand-blue':'fa-note-sticky text-brand-purple'))}"></i>
+              <i class="fa-solid ${icon}"></i>
             </div>
             <div>
               <p class="text-white text-sm font-semibold">${a.title}</p>
@@ -825,23 +1078,64 @@
             </div>
           </div>
           <div class="text-right">
-            ${typeof a.amount === 'number'
+            ${typeof a.amount==='number'
               ? `<p class="${a.amount>=0?'text-brand-green':'text-brand-red'} font-bold text-sm">${a.amount>=0?'+':''}${fmt(a.amount)}</p>`
               : '<p class="text-brand-text text-sm">—</p>'}
           </div>
         `;
         list.appendChild(row);
       });
-
       renderCompliance();
+      renderSparkline();
+      renderComplianceCalendar();
     }
 
-    // =============
-    // Init
-    // =============
+    /* ========= Compliance hint on session ========= */
+    function checkDayComplianceHint(ts){
+      const cap=Number(state.safety.lossCap||0);
+      const tlim=Number(state.safety.timeLimit||0);
+      const d=new Date(ts); d.setHours(0,0,0,0);
+      let net=0; let time=0;
+      state.activity.forEach(a=>{ const ad=new Date(a.ts); ad.setHours(0,0,0,0); if(ad.getTime()===d.getTime()){ if(a.type==='deposit') net+=a.amount||0; if(a.type==='withdraw') net-=Math.abs(a.amount||0); if(a.type==='session') net+=a.amount||0; }});
+      state.journal.forEach(j=>{ const jd=new Date(j.ts); jd.setHours(0,0,0,0); if(jd.getTime()===d.getTime()) time+=Number(j.time||0); });
+      if(cap>0 && net < -cap){ toast('Alert: daily loss cap exceeded'); }
+      else if(cap>0 && net < -cap*0.8){ toast('Warning: close to daily loss cap'); }
+      if(tlim>0 && time > tlim){ toast('Alert: daily time limit exceeded'); }
+      else if(tlim>0 && time > tlim*0.8){ toast('Warning: close to daily time limit'); }
+    }
+
+    /* ========= Init ========= */
     load();
+    ensureWeek();
+
+    /* Unfinished session restore (meta) */
+    if(state.meta.unfinishedSession){
+      if(confirm('Unfinished session timer found. Restore?')){
+        const minutesLeft = state.meta.unfinishedSession.minutesLeft||state.safety.timeLimit||60;
+        startTimer(minutesLeft);
+      } else {
+        state.meta.unfinishedSession=null; save();
+      }
+    }
+
+    /* First run onboarding */
+    if(state.meta.firstRun){ showOnboarding(); }
+
     switchTab('plan');
+    renderSafetyTab();
+    renderReportsTab();
+
+    /* Auto-backup snapshot (memory fallback) */
+    setInterval(()=>{ state.meta.lastBackupTs=now(); save(); }, 15000);
+
+    /* Before unload: remember timer state */
+    window.addEventListener('beforeunload', ()=>{
+      if(state.timer.active){
+        const elapsed=(now()-state.timer.startTs)/1000;
+        const left = Math.max(0, state.timer.plannedMinutes*60 - elapsed);
+        state.meta.unfinishedSession={ minutesLeft: Math.ceil(left/60) };
+        save();
+      }
+    });
 </script>
-
-
 </body></html>
