@@ -388,20 +388,54 @@ class _DiceRainPainter extends CustomPainter {
 
       final off = s * 0.28;
       final p = <Offset>[
-        Offset(-off, -off), Offset(0, -off), Offset(off, -off),
-        Offset(-off, 0), Offset(0, 0), Offset(off, 0),
-        Offset(-off, off), Offset(0, off), Offset(off, off),
+        Offset(-off, -off),
+        Offset(0, -off),
+        Offset(off, -off),
+        Offset(-off, 0),
+        Offset(0, 0),
+        Offset(off, 0),
+        Offset(-off, off),
+        Offset(0, off),
+        Offset(off, off),
       ];
 
       void drawFace(int n) {
         switch (n) {
-          case 1: pip(p[4]); break;
-          case 2: pip(p[0]); pip(p[8]); break;
-          case 3: pip(p[0]); pip(p[4]); pip(p[8]); break;
-          case 4: pip(p[0]); pip(p[2]); pip(p[6]); pip(p[8]); break;
-          case 5: pip(p[0]); pip(p[2]); pip(p[4]); pip(p[6]); pip(p[8]); break;
-          case 6: pip(p[0]); pip(p[2]); pip(p[3]); pip(p[5]); pip(p[6]); pip(p[8]); break;
-          default: pip(p[4]);
+          case 1:
+            pip(p[4]);
+            break;
+          case 2:
+            pip(p[0]);
+            pip(p[8]);
+            break;
+          case 3:
+            pip(p[0]);
+            pip(p[4]);
+            pip(p[8]);
+            break;
+          case 4:
+            pip(p[0]);
+            pip(p[2]);
+            pip(p[6]);
+            pip(p[8]);
+            break;
+          case 5:
+            pip(p[0]);
+            pip(p[2]);
+            pip(p[4]);
+            pip(p[6]);
+            pip(p[8]);
+            break;
+          case 6:
+            pip(p[0]);
+            pip(p[2]);
+            pip(p[3]);
+            pip(p[5]);
+            pip(p[6]);
+            pip(p[8]);
+            break;
+          default:
+            pip(p[4]);
         }
       }
 
@@ -655,6 +689,7 @@ class CasinoCourier {
 
   Future<void> putDeviceToLocalStorage(String? token) async {
     final m = model.devicePayload(token);
+    print(" Local load " + m.toString());
     await getWeb().evaluateJavascript(source: '''
 localStorage.setItem('app_data', JSON.stringify(${jsonEncode(m)}));
 ''');
@@ -765,14 +800,14 @@ class _CasinoLobbyState extends State<CasinoLobby> with WidgetsBindingObserver {
   String _currentUrl = "";
   var _startLoadTs = 0;
 
-  // Флаги против повторных отправок
-  bool _devicePushedOnce = false;
+  // Флаги против повторных отправок AppsFlyer
   bool _afPushedOnce = false;
 
   bool _notificationChannelBound = false;
 
   final Set<String> _customSchemes = {
-    'tg', 'telegram',
+    'tg',
+    'telegram',
     'whatsapp',
     'viber',
     'skype',
@@ -784,11 +819,16 @@ class _CasinoLobbyState extends State<CasinoLobby> with WidgetsBindingObserver {
   };
 
   final Set<String> _externalHosts = {
-    't.me', 'telegram.me', 'telegram.dog',
-    'wa.me', 'api.whatsapp.com', 'chat.whatsapp.com',
+    't.me',
+    'telegram.me',
+    'telegram.dog',
+    'wa.me',
+    'api.whatsapp.com',
+    'chat.whatsapp.com',
     'm.me',
     'signal.me',
-    'bnl.com', 'www.bnl.com',
+    'bnl.com',
+    'www.bnl.com',
   };
 
   @override
@@ -807,6 +847,17 @@ class _CasinoLobbyState extends State<CasinoLobby> with WidgetsBindingObserver {
     });
 
     _boot();
+
+    // Дополнительный запуск через 6 секунд после старта экрана
+    Timer(const Duration(seconds: 6), () async {
+      if (!mounted) return;
+      try {
+        await _courier?.putDeviceToLocalStorage(widget.signal);
+        await _pushAffiliateDataOnce();
+      } catch (e) {
+        CasinoSingletons().pitBoss.w("delayed push failed: $e");
+      }
+    });
   }
 
   Future<void> _loadOnceFlag() async {
@@ -844,7 +895,7 @@ class _CasinoLobbyState extends State<CasinoLobby> with WidgetsBindingObserver {
     _bindNotificationChannel();
     _preparePlayer();
 
-    // ВАЖНО: не отправляем тут никаких данных, только после первой успешной загрузки (onLoadStop) с флагами
+    // ВАЖНО: не отправляем тут никаких данных, только после первой успешной загрузки (onLoadStop)
   }
 
   void _wirePush() {
@@ -910,20 +961,8 @@ class _CasinoLobbyState extends State<CasinoLobby> with WidgetsBindingObserver {
     });
   }
 
-  Future<void> _pushDeviceDataOnce() async {
-    if (_devicePushedOnce) return;
-    _devicePushedOnce = true;
-    CasinoSingletons().pitBoss.i("TOKEN ship ${widget.signal}");
-    try {
-      await _courier?.putDeviceToLocalStorage(widget.signal);
-    } catch (e) {
-      CasinoSingletons().pitBoss.w("putDeviceToLocalStorage failed: $e");
-    }
-  }
-
   Future<void> _pushAffiliateDataOnce() async {
-    if (_afPushedOnce) return;
-    _afPushedOnce = true;
+
     try {
       await _courier?.sendRawToWeb(widget.signal);
     } catch (e) {
@@ -1190,14 +1229,18 @@ class _CasinoLobbyState extends State<CasinoLobby> with WidgetsBindingObserver {
                         final v = u;
                         if (v != null) {
                           if (_isBareEmail(v)) {
-                            try { await c.stopLoading(); } catch (_) {}
+                            try {
+                              await c.stopLoading();
+                            } catch (_) {}
                             final mailto = _toMailto(v);
                             await _openMailInWeb(mailto);
                             return;
                           }
                           final sch = v.scheme.toLowerCase();
                           if (sch != 'http' && sch != 'https') {
-                            try { await c.stopLoading(); } catch (_) {}
+                            try {
+                              await c.stopLoading();
+                            } catch (_) {}
                           }
                         }
                       },
@@ -1216,7 +1259,8 @@ class _CasinoLobbyState extends State<CasinoLobby> with WidgetsBindingObserver {
                       },
                       onReceivedHttpError: (controller, request, errorResponse) async {
                         final now = DateTime.now().millisecondsSinceEpoch;
-                        final ev = "HTTPError(status=${errorResponse.statusCode}, reason=${errorResponse.reasonPhrase})";
+                        final ev =
+                            "HTTPError(status=${errorResponse.statusCode}, reason=${errorResponse.reasonPhrase})";
                         await postCasinoStat(
                           event: ev,
                           timeStart: now,
@@ -1242,8 +1286,12 @@ class _CasinoLobbyState extends State<CasinoLobby> with WidgetsBindingObserver {
                       onLoadStop: (c, u) async {
                         await c.evaluateJavascript(source: "console.log('Harbor up!');");
 
-                        // Отправляем данные только ОДИН РАЗ
-                        await _pushDeviceDataOnce();
+                        // Запуск в onLoadStop
+                        try {
+                          await _courier?.putDeviceToLocalStorage(widget.signal);
+                        } catch (e) {
+                          CasinoSingletons().pitBoss.w("putDeviceToLocalStorage (onLoadStop) failed: $e");
+                        }
                         await _pushAffiliateDataOnce();
 
                         setState(() => _currentUrl = u.toString());
@@ -1284,7 +1332,8 @@ class _CasinoLobbyState extends State<CasinoLobby> with WidgetsBindingObserver {
                             try {
                               if (await canLaunchUrl(uri)) {
                                 await launchUrl(uri, mode: LaunchMode.externalApplication);
-                              } else if (web != uri && (web.scheme == 'http' || web.scheme == 'https')) {
+                              } else if (web != uri &&
+                                  (web.scheme == 'http' || web.scheme == 'https')) {
                                 await _openInBrowser(web);
                               }
                             } catch (_) {}
@@ -1328,7 +1377,8 @@ class _CasinoLobbyState extends State<CasinoLobby> with WidgetsBindingObserver {
                             try {
                               if (await canLaunchUrl(uri)) {
                                 await launchUrl(uri, mode: LaunchMode.externalApplication);
-                              } else if (web != uri && (web.scheme == 'http' || web.scheme == 'https')) {
+                              } else if (web != uri &&
+                                  (web.scheme == 'http' || web.scheme == 'https')) {
                                 await _openInBrowser(web);
                               }
                             } catch (_) {}
@@ -1381,7 +1431,7 @@ class _CasinoExternalWebState extends State<CasinoExternalWeb> with WidgetsBindi
       child: Scaffold(
         backgroundColor: Colors.black,
         body: InAppWebView(
-          initialSettings:  InAppWebViewSettings(
+          initialSettings: InAppWebViewSettings(
             javaScriptEnabled: true,
             disableDefaultErrorPage: true,
             mediaPlaybackRequiresUserGesture: false,
@@ -1452,7 +1502,7 @@ class _CasinoHelpLiteState extends State<CasinoHelpLite> {
             children: [
               InAppWebView(
                 initialFile: 'assets/luckwave.html',
-                initialSettings:  InAppWebViewSettings(
+                initialSettings: InAppWebViewSettings(
                   javaScriptEnabled: true,
                   supportZoom: false,
                   disableHorizontalScroll: false,
@@ -1528,7 +1578,7 @@ class CasinoTable extends StatelessWidget {
       backgroundColor: Colors.black,
       body: InAppWebView(
         initialUrlRequest: URLRequest(url: WebUri(url)),
-        initialSettings:  InAppWebViewSettings(
+        initialSettings: InAppWebViewSettings(
           javaScriptEnabled: true,
           disableDefaultErrorPage: true,
           mediaPlaybackRequiresUserGesture: false,
