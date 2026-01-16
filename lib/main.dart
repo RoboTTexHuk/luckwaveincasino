@@ -1565,31 +1565,3 @@ void main() async {
   );
 }
 
-// ============================================================================
-// Заглушка экрана, открываемого из уведомлений по URI
-// ============================================================================
-class CasinoTable extends StatelessWidget {
-  final String url;
-  const CasinoTable(this.url, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: InAppWebView(
-        initialUrlRequest: URLRequest(url: WebUri(url)),
-        initialSettings: InAppWebViewSettings(
-          javaScriptEnabled: true,
-          disableDefaultErrorPage: true,
-          mediaPlaybackRequiresUserGesture: false,
-          allowsInlineMediaPlayback: true,
-          allowsPictureInPictureMediaPlayback: true,
-          useOnDownloadStart: true,
-          javaScriptCanOpenWindowsAutomatically: true,
-          useShouldOverrideUrlLoading: true,
-          supportMultipleWindows: true,
-        ),
-      ),
-    );
-  }
-}
